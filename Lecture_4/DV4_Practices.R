@@ -45,8 +45,16 @@ Q[,1]
 Q[3,]
 
 
+# Practice 11
 
+dates = c(today = Sys.Date(), christmas=(as.Date("2022-12-24")), 
+          birthday=as.Date("1999-09-14"))
 
+gifts = sample(0 : 1000, 3)
+
+giftsPerDate = data.frame(x = dates, y = gifts)
+
+plot(giftsPerDate, type="h")
 
 
 

@@ -57,4 +57,19 @@ giftsPerDate = data.frame(x = dates, y = gifts)
 plot(giftsPerDate, type="h")
 
 
+# Practice 12
 
+library(readr)
+
+Salaries_CSV = read_csv("/home/hannehue/Desktop/Data_Visualization/SalariesDataset/Salaries.csv")
+View(Salaries_CSV)
+
+# Practice 13
+
+Salaries_TSV = read_tsv("/home/hannehue/Desktop/Data_Visualization/SalariesDataset/Salaries.txt")
+View(Salaries_TSV)
+
+# Practice 14 
+
+library(readxl)
+Salaries_EXCEL = read_excel("/home/hannehue/Desktop/Data_Visualization/SalariesDataset/Salaries.xlsx")

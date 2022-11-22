@@ -21,8 +21,8 @@ library(rdrop2)
 library(lubridate)
 library(readr)
 
-Masculinity_Data = read_csv("data_files/masculinity-survey.csv")
-View(Masculinity_Data)
+masculinity_survey <- read_csv("Project/Shiny App/data_files/masculinity-survey.csv")
+View(masculinity_survey)
 
 # Spinner options.
 options(spinner.type = 7,

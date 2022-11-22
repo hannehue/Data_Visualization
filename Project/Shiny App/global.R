@@ -28,6 +28,19 @@ View(Masculinity_Data)
 options(spinner.type = 7,
         spinner.color = "#F2CD37")
 
+# Tables we're going to get from Rebrickable.
+table.names = c("themes", "colors", "part_categories", "parts", "inventories",
+                "sets", "inventory_parts", "inventory_sets",
+                "part_relationships")
+
+# Dataframes we're going to create.
+data.frames = c("heads", "clothes.type", "fashion.items", "hair.style",
+                "accessory.parts", "moods", "theme.counts",
+                "ecology.vertices.vis", "ecology.edges.vis", "ecology",
+                "colors")
+
+# Paths to various places where we're storing files.
+local.path.to.tables = "data_files/"
 
 
 # Number of milliseconds in one week.  This is how often we check for new data

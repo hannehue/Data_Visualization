@@ -116,11 +116,8 @@ shinyUI(fluidPage(theme = "style.css",
         mainPanel(
           dataTableOutput("demographicsSets")
         )
-
       )
-
     )
-
   ),
   
   # Fashion

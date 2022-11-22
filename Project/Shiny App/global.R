@@ -19,34 +19,21 @@ library(visNetwork)
 library(httr)
 library(rdrop2)
 library(lubridate)
+library(readr)
+
+Masculinity_Data = read_csv("data_files/masculinity-survey.csv")
+View(Masculinity_Data)
 
 # Spinner options.
 options(spinner.type = 7,
         spinner.color = "#F2CD37")
 
-# Tables we're going to get from Rebrickable.
-table.names = c("themes", "colors", "part_categories", "parts", "inventories",
-                "sets", "inventory_parts", "inventory_sets",
-                "part_relationships")
 
-# Dataframes we're going to create.
-data.frames = c("heads", "clothes.type", "fashion.items", "hair.style",
-                "accessory.parts", "moods", "theme.counts",
-                "ecology.vertices.vis", "ecology.edges.vis", "ecology",
-                "colors")
-
-# Paths to various places where we're storing files.
-local.path.to.tables = "data_files/"
-web.path.to.tables = "http://m.rebrickable.com/media/downloads/"
-dropbox.path.to.raw.tables = "raw_lego_tables/"
-dropbox.path.to.munged.tables = "munged_lego_tables/"
 
 # Number of milliseconds in one week.  This is how often we check for new data
 # at Rebrickable.
 milliseconds.in.one.week = 1000 * 60 * 60 * 24 * 7
 
-# Authenticate Dropbox.
-drop_auth(rdstoken = "droptoken.rds")
 
 # Function to create a color picker input.  We will need several of these.
 color.picker.input = function(input.id, data.df, label.text) {

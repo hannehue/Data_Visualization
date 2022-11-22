@@ -2,20 +2,20 @@ shinyUI(fluidPage(theme = "style.css",
                   div(style = "padding: 1px 0px; width: '100%'",
                       titlePanel(
                         title = "",
-                        windowTitle = "Living in the Lego World"
+                        windowTitle = "Masculinity data visualization"
                       )
                   ),
                   navbarPage(
   
   # Application title.
   title = div(span(img(src = "lego_head_small.png"),
-                   "Living in the Lego World",
+                   "Masculinity data visualization",
                    style = "position: relative; top: 50%; transform: translateY(-50%);")),
   
   # Demographics.
   tabPanel(
 
-    "Demographics",
+    "Barchart",
 
     # One tab for each plot/table.
     tabsetPanel(
@@ -126,7 +126,7 @@ shinyUI(fluidPage(theme = "style.css",
   # Fashion
   tabPanel(
 
-    "Fashion",
+    "Area Chart",
 
     # One tab for each plot/table.
     tabsetPanel(
@@ -276,10 +276,10 @@ shinyUI(fluidPage(theme = "style.css",
 
   ),
   
-  # Moods.
+  # Density chart.
   tabPanel(
 
-    "Moods",
+    "Density chart",
 
     # One tab for each plot/table.
     tabsetPanel(
@@ -388,7 +388,7 @@ shinyUI(fluidPage(theme = "style.css",
   # Ecology.
   tabPanel(
 
-    "Ecology",
+    "Later todo",
 
     # One tab for each plot/table.
     tabsetPanel(

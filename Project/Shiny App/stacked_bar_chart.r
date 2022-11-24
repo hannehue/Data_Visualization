@@ -1,10 +1,13 @@
-library(data.table)
+library(dplyr)
 library(ggplot2)
 
 dat <- fread("Shiny App/data_files/raw-responses.csv")
 
-dat_sub <- dat[, .(age3 = as.factor(age3), racethn4 = as.factor(racethn4))][, .N, by = .(age3, racethn4)]
-
-dat_sub[, tot := sum(N), by = age3][, perc := N / tot * 100][order(age3)]
+dat_sub <- dat %>%
+  select(age3, racethn4) %>%
+  group_by(age3, racethn4) %>%
+  summarise(n = n()) %>%
+  group_by(age3) %>%
+  mutate(tot = sum(n), perc = n / tot * 100)
 
 ggplot(dat_sub, aes(x = age3, y = perc, fill = racethn4)) + geom_col()

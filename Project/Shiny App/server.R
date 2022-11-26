@@ -9,6 +9,7 @@ shinyServer(
   mascu = raw_data$q0002
   xlist = list(age, mascu)
   mascu_df = as.data.frame(xlist)
+  #quest = formatted_data[,input$questionPicker]
   
   output$mascuPlot <- renderPlot({
     mascu_df %>%

@@ -27,8 +27,8 @@ shinyUI(
         # Sidebar panel for controls.
         sidebarPanel(
           pickerInput(
-            "demographicsCircleThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
+            "questionPicker", "Pick questions to show data for:",
+            choices = colnames(formatted_data)
           ),
           tags$p(HTML("<b>Hover</b> to see the part name.")),
         ),

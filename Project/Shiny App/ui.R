@@ -26,9 +26,9 @@ shinyUI(
 
         # Sidebar panel for controls.
         sidebarPanel(
-          pickerInput(
-            "questionPicker", "Pick questions to show data for:",
-            choices = colnames(formatted_data)
+          selectInput(
+            inputId = "singleColumn", label = "Single Column",
+            choices = colnames(single_Column_Quest)
           ),
           tags$p(HTML("<b>Hover</b> to see the part name.")),
         ),

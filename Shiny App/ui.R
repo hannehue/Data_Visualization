@@ -46,44 +46,22 @@ shinyUI(
   
   # Fashion
   tabPanel(
-
-    "Area Chart",
-
+    "stacked bar chart",
     # One tab for each plot/table.
     tabsetPanel(
-
       type = "tabs",
-
       # Treemap of hair style and color.
       tabPanel(
-
-        "Hair",
-
+        "stacked_bar_chart",
         # Sidebar panel for controls.
         sidebarPanel(
-          pickerInput(
-            "hairTreemapThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
-          ),
-          selectInput(
-            "hairTreemapOrderPicker", "Adjust order of levels:",
-            choices = list("Color, then style" = "color.first",
-                           "Style, then color" = "style.first")
-          ),
-          tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
-          tags$p(HTML("<b>Click</b> to drill down.  At the lowest level, <b>hover</b> to see the part name.")),
-          tags$p(HTML("<b>Style</b> is inferred from keywords in the part name.")),
-          tags$p(HTML("A part with no keywords is classified as <b>\"Other\"</b>.")),
-          tags$p(HTML("A single part may have <b>multiple styles</b>; in that case, it's counted in <i>all</i> relevant styles."))
+          tags$p(span("Daniels stacked bar chart", style = "color:red")),
         ),
-
         # Main panel with plot.
-        mainPanel(div(
-          style = "position:relative",
-          htmlOutput("hairTreemapUI") %>%
+        mainPanel(
+          plotOutput("stacked_bar_chart") %>%
             withSpinner()
-        ))
-
+        )
       ),
 
       # Treemap of clothing type and color.
@@ -457,38 +435,9 @@ shinyUI(
       tabPanel(
         "Credits",
         tags$h1("Datasets"),
-        tags$p(HTML("All Lego data comes from the files made available by <a href=\"https://rebrickable.com/downloads/\">Rebrickable</a>.  The app checks for new data about once a week.")),
-        tags$p(HTML("Phylogenetic trees are inferred from hypernym relations in the <a href=\"https://wordnet.princeton.edu/\">WordNet</a> database, using the files provided by <a href=\"http://wordnetport.sourceforge.net/\">WordNetPort</a>.")),
-        tags$p(HTML("Basic lemmatization uses the list in the <a href=\"https://github.com/trinker/lexicon\">lexicon</a> package.")),
-        tags$h1("R Packages"),
-        tags$p(HTML("<a href=\"http://shiny.rstudio.com/\">Shiny</a> and the <a href=\"https://www.tidyverse.org/\">tidyverse</a>, of course.")),
-        tags$p(HTML("Position and size of the circles in the demographics circle-packing graphs are calculated using <a href=\"https://github.com/thomasp85/ggraph\">ggraph</a>.")),
-        tags$p(HTML("<a href=\"https://igraph.org/r/\">igraph</a> is used to model the hierarchical relationships in the circle-packing graphs, and to construct phylogenetic trees from the graph of WordNet hypernym relationships.")),
-        tags$p(HTML("Treemaps, polar charts, and bar charts are rendered with <a href=\"https://www.highcharts.com/\">Highcharts</a>, via <a href=\"http://jkunst.com/highcharter/\">Highcharter</a>.")),
-        tags$p(HTML("Phylogenetic trees are rendered with <a href=\"https://datastorm-open.github.io/visNetwork/\">visNetwork</a>.")),
-        tags$p(HTML("Tables are rendered with <a href=\"https://datatables.net/\">DataTables</a>, using the <a href=\"https://rstudio.github.io/DT/\">DT</a> package.")),
-        tags$p(HTML("Joins with regular expressions are facilitated by <a href=\"https://github.com/dgrtwo/fuzzyjoin\">fuzzyjoin</a>.")),
-        tags$p(HTML("<a href=\"https://github.com/statsmaths/cleanNLP\">cleanNLP</a> and <a href=\"https://cran.r-project.org/web/packages/wordnet/index.html\">wordnet</a> aren't used in the app, but were helpful in exploratory data analysis</a>."))
+        tags$p(HTML("The data is from <a href=\"https://github.com/fivethirtyeight/data/tree/master/masculinity-survey> FiveThirtyEight’s study </a> in collaboration with WNYC, on masculinity and what effects it has on people in different categories. It consists of a series of questions, where the individual can answer typically one of 5 possibilities, usually varying from ‘very much’ to ‘not at all’ and ‘no answer’, with all of them adding up to 100% of people asked. The categories consist of ‘Adult men’, then three age categories of ‘18-34’, ‘35-64’ and ‘65 and up’. After these there are categories for ‘white’ and ‘non-white’, then ‘has children’ and ‘no children’, and lastly sexual orientation summed up as ‘straight’ and ‘gay/bisexual’. ")),
       ),
-      
-      # Other visualizations.
-      tabPanel(
-        "Other visualizations",
-        tags$p(HTML("")),
-        tags$p(HTML("<a href=\"https://shiny.rstudio.com/gallery/lego-set.html\">LEGO set visualizer</a> (Shiny app)")),
-        tags$p(HTML("<a href=\"https://www.kaggle.com/devisangeetha/lego-let-s-play\">LEGO - Let's play</a> (parts, colors, sets, and themes)")),
-        tags$p(HTML("<a href=\"https://mode.com/blog/lego-data-analysis\">67 years of Lego sets</a>")),
-        tags$p(HTML("<a href=\"https://flowingdata.com/2015/10/19/evolving-lego-color-palette/\">Evolving LEGO color palette</a>")),
-        tags$p(HTML("<a href=\"https://nateaff.com/2017/09/11/lego-topic-models/\">LEGO color themes as topic models</a>")),
-        tags$p(HTML("<a href=\"https://www.wired.com/2012/01/the-mathematics-of-lego/\">The mathematics of Lego</a> (set size and the power law)")),
-        tags$p(HTML("<a href=\"http://www.bartneck.de/2010/12/17/taxonomy-for-lego-minifigures/\">Taxonomy for LEGO Minifigures</a>")),
-        tags$p(HTML("<a href=\"https://www.kaggle.com/martinellis/prominence-of-special-parts-over-time-visualised\">Prominence of special parts over time, visualised</a>")),
-        tags$p(HTML("<a href=\"https://therealityprose.wordpress.com/2013/01/17/what_happened_with_lego/\">What happened with LEGO</a> (Lego set price over time)")),
-        tags$p(HTML("Various other projects on <a href=\"https://www.kaggle.com/rtatman/lego-database/kernels\">Kaggle</a>"))
-      )
-      
     )
-    
   )
   
 )))

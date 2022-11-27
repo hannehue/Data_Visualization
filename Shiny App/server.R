@@ -26,5 +26,22 @@ shinyServer(
       ggplot(aes(age, n, fill = quest)) +
       geom_col(position = "dodge")
   }, height = 600, width = 900)
+  
+  dat_sub <- raw_data %>%
+    select(age3, racethn4) %>%
+    group_by(age3, racethn4) %>%
+    summarise(n = n()) %>%
+    group_by(age3) %>%
+    mutate(tot = sum(n), perc = n / tot * 100)
+  
+  output$stacked_bar_chart <- renderPlot({
+    ggplot(dat_sub, aes(x = age3, y = perc, fill = racethn4)) +
+      geom_col(width = 1) +
+      ggtitle("Age and race distribution of respondees") +
+      xlab("Age groups") +
+      ylab("Respondee percentage") +
+      scale_fill_discrete(name = "Race")
+    
+  })
 
 })

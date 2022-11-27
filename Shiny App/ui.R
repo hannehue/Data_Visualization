@@ -1,4 +1,5 @@
-shinyUI(fluidPage(theme = "style.css",
+shinyUI(
+  fluidPage(theme = "style.css",
                   div(style = "padding: 1px 0px; width: '100%'",
                       titlePanel(
                         title = "",
@@ -14,14 +15,10 @@ shinyUI(fluidPage(theme = "style.css",
   
   # Demographics.
   tabPanel(
-
     "Barchart",
-
     # One tab for each plot/table.
     tabsetPanel(
-
       type = "tabs",
-
       # Circle-packing plot of ethnicity and gender.
       tabPanel(
 
@@ -29,99 +26,23 @@ shinyUI(fluidPage(theme = "style.css",
 
         # Sidebar panel for controls.
         sidebarPanel(
-          pickerInput(
-            "demographicsCircleThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
+          selectInput(
+            inputId = "singleColumn", label = "Single Column",
+            choices = colnames(single_Column_Quest)
           ),
-          pickerInput(
-            "demographicsCircleGenderPicker", "Filter to one or more genders:",
-            choices = c(),
-            options = list(`actions-box` = T),
-            multiple = T
-          ),
-          tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.  The first graph may take up to two minutes if the app is retrieving new data from Rebrickable.", style = "color:red")),
           tags$p(HTML("<b>Hover</b> to see the part name.")),
-          tags$p(HTML("Each circle represents a <b>unique minifigure or minidoll head</b>.")),
-          tags$p(HTML("Area is proportional to the <b>number of pieces</b> across all sets.")),
-          tags$p(HTML("<b>\"Ethnicity\"</b> is the color of the piece.  Yes, it's silly.")),
-          tags$p(HTML("<b>Gender</b> is inferred from keywords in the part name (\"Male\", \"Female\", etc., plus references to facial hair).")),
-          tags$p("Some heads are not labeled male/female but contain the name of a character of known gender (e.g., \"Han Solo\").  Incorporating this information would require a hand-maintained list of character names and their genders; I haven't done this.")
         ),
-
         # Main panel with plot.
         mainPanel(
-          uiOutput("demographicsCirclePlotUI") %>%
+          plotOutput("mascuPlot") %>%
             withSpinner()
         )
-
       ),
-
-      # Bar plot of ethnic diversity and % female.
-      tabPanel(
-
-        "Ethnic diversity and gender parity by theme",
-
-        # Sidebar panel for controls.
-        sidebarPanel(
-          pickerInput(
-            "demographicsMeasurePicker", "Choose measure to plot:",
-            choices = c("Ethnic diversity", "Percent female"),
-            selected = "Ethnic diversity",
-            multiple = F
-          ),
-          pickerInput(
-            "demographicsOrderPicker", "Order by:",
-            choices = c("Measure", "Number of pieces", "Theme name"),
-            selected = "Measure",
-            multiple = F
-          ),
-          tags$p(HTML("<b>Hover</b> to see the number of pieces and measure value.")),
-          tags$p(HTML("<b>Ethnic diversity</b> is the Shannon entropy (base 2) of color over all pieces.")),
-          tags$p(HTML("<b>Percent female</b> is the percent of female pieces out of all pieces, excluding pieces of unknown gender.")),
-          tags$p(HTML("<b>Saturation</b> represents the number of pieces in the theme."))
-        ),
-
-        # Main panel with plot.
-        mainPanel(
-          highchartOutput("demographicsDiversity",
-                          width = "700px", height = "2000px")
-        )
-
-      ),
-      
-      # Table for finding sets with pieces of particular ethnicity/gender.
-      tabPanel(
-
-        "Find sets with a specific ethnicity or gender",
-
-        # Sidebar panel for controls.
-        sidebarPanel(
-          pickerInput(
-            "demographicsSetThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
-          ),
-          pickerInput(
-            "demographicsSetEthnicityPicker", "Filter to one or more ethnicities:",
-            choices = c(), multiple = T
-          ),
-          pickerInput(
-            "demographicsSetGenderPicker", "Filter to one or more genders:",
-            choices = c(),
-            options = list(`actions-box` = T),
-            multiple = T
-          )
-        ),
-
-        # Main panel with table.
-        mainPanel(
-          dataTableOutput("demographicsSets")
-        )
-
-      )
-
     )
-
   ),
+  
+  
+  
   
   # Fashion
   tabPanel(

@@ -10,4 +10,9 @@ dat_sub <- dat %>%
   group_by(age3) %>%
   mutate(tot = sum(n), perc = n / tot * 100)
 
-ggplot(dat_sub, aes(x = age3, y = perc, fill = racethn4)) + geom_col(width = 1)
+ggplot(dat_sub, aes(x = age3, y = perc, fill = racethn4)) +
+  geom_col(width = 1) +
+  ggtitle("Age and race distribution of respondees") +
+  xlab("Age groups") +
+  ylab("Respondee percentage") +
+  scale_fill_discrete(name = "Race")

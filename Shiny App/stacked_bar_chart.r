@@ -1,9 +1,8 @@
+library(readr)
 library(dplyr)
 library(ggplot2)
-library(readr)
 
-
-dat <- read_csv("Shiny App/data_files/raw-responses.csv")
+dat <- read_csv("data_files/raw-responses.csv")
 
 dat_sub <- dat %>%
   select(age3, racethn4) %>%

@@ -1,24 +1,26 @@
 shinyServer(
   function(input, output, session) {
     
-    
-    
-  
   # Barchart
-  age = raw_data$age3
-  # mascu = raw_data$q0002
-  
+    
+  #Reactive consumer (renderplot)
   output$mascuPlot <- renderPlot({
     
+    
+    age = raw_data$age3
+    
+    #Loading in selected question
     quest = reactive({
-      single_Column_Quest[,input$questionPicker]
+      single_Column_Quest[,input$singleColumn]
     })
     
     xlist = list(age, quest())
     mascu_df = as.data.frame(xlist)
+    colnames(mascu_df) = c("age", "quest")
     
+    #Rendering 
     mascu_df %>%
-      count(age, quest = factor(quest())) %>%
+      count(age, quest) %>%
       group_by(age) %>%
       mutate(n = prop.table(n) * 100) %>%
       ggplot(aes(age, n, fill = quest)) +

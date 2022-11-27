@@ -13,7 +13,7 @@ shinyUI(
                    "Masculinity data visualization",
                    style = "position: relative; top: 50%; transform: translateY(-50%);")),
   
-  # Demographics.
+  # Barchart
   tabPanel(
     "Barchart",
     # One tab for each plot/table.
@@ -27,8 +27,8 @@ shinyUI(
         # Sidebar panel for controls.
         sidebarPanel(
           pickerInput(
-            "demographicsCircleThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
+            "quiestion_picker", "Filter to one or more themes:",
+            choices = c(colnames(raw_data))
           ),
           tags$p(HTML("<b>Hover</b> to see the part name.")),
         ),

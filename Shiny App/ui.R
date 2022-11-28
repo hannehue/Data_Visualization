@@ -19,7 +19,7 @@ shinyUI(
     tabsetPanel(
       type = "tabs",
       tabPanel(
-        "Ethnicity and gender",
+        "All questions",
         sidebarPanel(
           selectInput(
             inputId = "singleColumn", label = "Single Column",
@@ -29,6 +29,30 @@ shinyUI(
         ),
         mainPanel(
           plotOutput("mascuPlot") %>%
+            withSpinner()
+        )
+      ),
+      tabPanel(
+        "All questions1",
+        sidebarPanel(
+          selectInput(
+            inputId = "singleColumn1", label = "Single Column",
+            choices = colnames(single_Column_Quest)
+          ),
+        ),
+        mainPanel(
+          plotOutput("circlePacking") %>%
+            withSpinner()
+        )
+      ),
+      
+      tabPanel(
+        "Answers by Ethnicity",
+        sidebarPanel(
+          tags$p(HTML("<b>Hover</b> to see the part name.")),
+        ),
+        mainPanel(
+          plotOutput("pieChart") %>%
             withSpinner()
         )
       ),
@@ -51,15 +75,27 @@ shinyUI(
       ),
 
       tabPanel(
-        "New barchart",
-        # Sidebar panel for controls.
+        "Horizontal barplot 2",
         sidebarPanel(
         ),
-
+        
         # Main panel with plot.
-        mainPanel(div() %>%
-            withSpinner()
-        ))
+        mainPanel(plotOutput("horisontalPlot_1") %>%
+                    withSpinner()
+        )
+      ),
+      
+      tabPanel(
+        "Horizontal barplot 2",
+        sidebarPanel(
+        ),
+        
+        # Main panel with plot.
+        mainPanel(plotOutput("horisontalPlot_2") %>%
+                    withSpinner()
+        )
+      )
+      
      )
   ),
   

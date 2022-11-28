@@ -33,11 +33,3 @@ ggplot(data = worry_about) +
   geom_bar(aes(x = questions[11], fill = q0008_0011)) +
   geom_bar(aes(x = questions[12], fill = q0008_0012)) + 
   coord_flip()
-
-mascu_df %>%
-  count(age, quest) %>%
-  group_by(age) %>%
-  mutate(n = prop.table(n) * 100) %>%
-  ggplot(aes(age, n, fill = quest)) +
-  geom_col(position = "dodge")
-}, height = 600, width = 900)

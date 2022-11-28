@@ -25,31 +25,30 @@ shinyUI(
             inputId = "singleColumn", label = "Single Column",
             choices = colnames(single_Column_Quest)
           ),
-          tags$p(HTML("<b>Hover</b> to see the part name.")),
         ),
         mainPanel(
           plotOutput("mascuPlot") %>%
             withSpinner()
         )
       ),
-      tabPanel(
-        "All questions1",
-        sidebarPanel(
-          selectInput(
-            inputId = "singleColumn1", label = "Single Column",
-            choices = colnames(single_Column_Quest)
-          ),
-        ),
-        mainPanel(
-          plotOutput("circlePacking") %>%
-            withSpinner()
-        )
-      ),
+      # tabPanel(
+      #   "All questions1",
+      #   sidebarPanel(
+      #     selectInput(
+      #       inputId = "singleColumn1", label = "Single Column",
+      #       choices = colnames(single_Column_Quest)
+      #     ),
+      #   ),
+      #   mainPanel(
+      #     plotOutput("circlePacking") %>%
+      #       withSpinner()
+      #   )
+      # ),
       
       tabPanel(
         "Answers by Ethnicity",
         sidebarPanel(
-          tags$p(HTML("<b>Hover</b> to see the part name.")),
+          tags$p(HTML("What is the general spread of races over age that has taken this survey?")),
         ),
         mainPanel(
           plotOutput("pieChart") %>%
@@ -66,7 +65,7 @@ shinyUI(
       tabPanel(
         "stacked_bar_chart",
         sidebarPanel(
-          tags$p(span("Daniels stacked bar chart", style = "color:red")),
+          tags$p(span("Stacked bar chart", style = "color:red")),
         ),
         mainPanel(
           plotOutput("stacked_bar_chart") %>%
@@ -108,6 +107,21 @@ shinyUI(
       tabPanel(
 
         "Mood counts",
+        sidebarPanel(
+          tags$p(HTML("<h3>Which of the following do you worry about on a daily or near daily basis? (Select all that apply.)</h3>")),
+          tags$p(HTML("Your height")),
+          tags$p(HTML("Your weight")),
+          tags$p(HTML("Your hair or hairline")),
+          tags$p(HTML("Your physique")),
+          tags$p(HTML("Appearance of your genitalia")),
+          tags$p(HTML("Your clothing or style")),
+          tags$p(HTML("Sexual performance or amount of sex")),
+          tags$p(HTML("Your mental health")),
+          tags$p(HTML("Your physical health")),
+          tags$p(HTML("Your finances, including your current or future income, assets, or debt")),
+          tags$p(HTML("Your ability to provide for your family, current or anticipated")),
+          tags$p(HTML("None of the above")),
+        ),
         
           # Main panel with plot.
           mainPanel(
@@ -153,7 +167,7 @@ shinyUI(
   # Later todo
   tabPanel(
 
-    "Later todo",
+    "Research questions",
 
     # One tab for each plot/table.
     tabsetPanel(
@@ -163,22 +177,16 @@ shinyUI(
       # Dendrogram of plants.
       tabPanel(
 
-        "Somethingg nice",
+        "Questions",
 
         # Sidebar panel for controls.
         sidebarPanel(
-          pickerInput(
-            "plantsDendrogramThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
-          ),
-          tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
+          tags$p(HTML("<h3>How does mens rating of their masculinity reflect how physically intimate they are with each other, based on their sexuality?</h3>")),
+          tags$p(HTML("<h3>What is the general spread of races over age that has taken this survey?</h3>")),
+          tags$p(HTML("<h4>How do questions, such as self perceived masculinity, come across in different age and race groups?</h4>")),
+          tags$p(HTML("<h4>How does race and/or income affect how masculine men perceive themselves? And does this have a correlation to how often they cry or show physical affection?</h4>")),
+          
         ),
-
-        # Main panel with dendrogram.
-        mainPanel(
-          uiOutput("plantsDendrogram") %>%
-            withSpinner()
-        )
       )
     )
   ),

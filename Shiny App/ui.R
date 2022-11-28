@@ -101,20 +101,100 @@ shinyUI(
   
   # Density chart.
   tabPanel(
-    "Density chart",
+    "Multicolumn",
 
     tabsetPanel(
       type = "tabs",
       tabPanel(
 
-        "Some Chart",
-        sidebarPanel(
-        ),
+        "Mood counts",
+
+        # Sidebar panel for controls.
+      #   sidebarPanel(
+      #     pickerInput(
+      #       "moodsPolarThemePicker", "Filter to one or more themes:",
+      #       choices = c(), multiple = T
+      #     ),
+      #     pickerInput(
+      #       "moodsPolarGenderPicker", "Filter to one or more genders:",
+      #       choices = c(),
+      #       options = list(`actions-box` = T),
+      #       multiple = T
+      #     ),
+      #     tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
+      #     tags$p(HTML("<b>Hover</b> to see the number of pieces.")),
+      #     tags$p(HTML("<b>Mood</b> is inferred from keywords in the part name (heads only).")),
+      #     tags$p(HTML("A single head may have <b>multiple moods</b>; in that case, it's counted in <i>all</i> relevant moods."))
+      #   ),
+      # 
+      #   # Main panel with plot.
+      #   mainPanel(
+      #     plotOutput("multiColumn") %>%
+      #       withSpinner()
+      #   )
+      # 
+      # ),
+      # 
+      # # Bar plot of moods.
+      # tabPanel(
+      # 
+      #   "Mood percents",
+      # 
+      #   # Sidebar panel for controls.
+      #   sidebarPanel(
+      #     pickerInput(
+      #       "moodsMoodPicker", "Choose mood to plot:",
+      #       choices = c("Happy", "Sad", "Angry", "Afraid"),
+      #       selected = "Happy",
+      #       multiple = F
+      #     ),
+      #     pickerInput(
+      #       "moodsOrderPicker", "Order by:",
+      #       choices = c("Percent of pieces with mood", "Total pieces", "Theme name"),
+      #       selected = "Percent of pieces with mood",
+      #       multiple = F
+      #     ),
+      #     tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
+      #     tags$p(HTML("<b>Saturation</b> represents the number of pieces in the theme.")),
+      #     tags$p(HTML("<b>Hover</b> to see the number of pieces and percent with the chosen mood."))
+      #   ),
 
         # Main panel with plot.
         mainPanel(
-          div() %>%
-            withSpinner()
+          highchartOutput("moodsBarPlot",
+                          width = "700px", height = "2000px")
+        )
+
+      ),
+
+      # Table for finding sets with pieces with a particular mood.
+      tabPanel(
+
+        "Find sets with a specific mood",
+
+        # Sidebar panel for controls.
+        sidebarPanel(
+          pickerInput(
+            "moodsSetThemePicker", "Filter to one or more themes:",
+            choices = c(), multiple = T
+          ),
+          pickerInput(
+            "moodsSetGenderPicker", "Filter to one or more genders:",
+            choices = c(),
+            options = list(`actions-box` = T),
+            multiple = T
+          ),
+          pickerInput(
+            "moodsSetMoodPicker", "Filter to one or more moods:",
+            choices = c("Happy", "Sad", "Angry", "Afraid"),
+            options = list(`actions-box` = T),
+            multiple = T
+          )
+        ),
+
+        # Main panel with table.
+        mainPanel(
+          dataTableOutput("moodsSets")
         )
       )
     )

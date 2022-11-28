@@ -57,6 +57,23 @@ single_Column_Quest = formatted_data[, c(
 )]
 
 
+worry_about = formatted_data[, c(
+  "q0008_0001",
+  "q0008_0002",
+  "q0008_0003",
+  "q0008_0004",
+  "q0008_0005",
+  "q0008_0006",
+  "q0008_0007",
+  "q0008_0008",
+  "q0008_0009",
+  "q0008_0010",
+  "q0008_0011",
+  "q0008_0012"
+)]
+
+
+
 colnames(single_Column_Quest) = c(
   "1How Masculine do you feel?",
   "2How important is it, that others see you as masculine?",

@@ -107,9 +107,6 @@ shinyServer(
       coord_flip()
   })
   
-  print(getwd())
-  print(getwd())
-  print(getwd())
   output$multiColumn <- renderPlot({
     library(tidyverse)
     Test <- read_excel("data_files/Clean_Multi_Column.xlsx")
@@ -127,6 +124,7 @@ shinyServer(
     ggplot(Test, aes(fill = Selection, x = Question, y = percentage)) +
       geom_bar(position = "fill", stat = "identity") +
       coord_flip() + scale_y_reverse() +
+      scale_fill_manual(values = c("#E0912A", "#005F94")) +
       labs(title = "What do you worry about on a daily/near daily basis")
   })
 

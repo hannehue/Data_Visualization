@@ -14,6 +14,7 @@ Test$Question = factor(Test$Question, levels = c("None of the above", "Height", 
 ggplot(Test, aes(fill = Selection, x = Question, y = percentage)) +
   geom_bar(position = "fill", stat = "identity") +
   coord_flip() + scale_y_reverse() +
+  scale_fill_manual(values = c("#E0912A", "#005F94")) +
   labs(title = "What do you worry about on a daily/near daily basis")
 
 # SAVE THIS FUCKING LINK

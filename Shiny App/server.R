@@ -107,40 +107,27 @@ shinyServer(
       coord_flip()
   })
   
-  
+  print(getwd())
+  print(getwd())
+  print(getwd())
   output$multiColumn <- renderPlot({
-    questions = c(
-      "Height",
-      "Weight",
-      "Hair",
-      "Physique",
-      "Appearance of genetalia",
-      "Clothing style",
-      "Sexual performance or amount of sex",
-      "Mental health",
-      "Physical health",
-      "Your finances",
-      "Ability to provide for family",
-      "None of the above"
-    )
+    library(tidyverse)
+    Test <- read_excel("data_files/Clean_Multi_Column.xlsx")
     
+    Test <- Test %>%
+      group_by(Question) %>%
+      mutate(percentage = Value / sum(Value) * 100)
     
-    q0801Count = factor(worry_about$q0008_0001)
-    
-    ggplot(data = worry_about) +
-      geom_bar(aes(x = questions[1], fill = q0008_0001)) +
-      geom_bar(aes(x = questions[2], fill = q0008_0002)) +
-      geom_bar(aes(x = questions[3], fill = q0008_0003)) +
-      geom_bar(aes(x = questions[4], fill = q0008_0004)) + 
-      geom_bar(aes(x = questions[5], fill = q0008_0005)) +
-      geom_bar(aes(x = questions[6], fill = q0008_0006)) + 
-      geom_bar(aes(x = questions[7], fill = q0008_0007)) +
-      geom_bar(aes(x = questions[8], fill = q0008_0008)) + 
-      geom_bar(aes(x = questions[9], fill = q0008_0009)) +
-      geom_bar(aes(x = questions[10], fill = q0008_0010)) + 
-      geom_bar(aes(x = questions[11], fill = q0008_0011)) +
-      geom_bar(aes(x = questions[12], fill = q0008_0012)) + 
-      coord_flip()
+    Test$Selection = as.factor(Test$Selection)
+    Test$Selection = factor(Test$Selection, levels = c("Selected", "Not Selected"))
+    Test$percentage = round(Test$percentage, 0)
+    Test$Question = factor(Test$Question, levels = c("None of the above", "Height", "Appearance of genetalia", "Clothing style", "Hair", "Sexual performance or amount of sex",
+                                                     "Mental health", "Ability to provide for family", "Physique", "Your finances", "Physical health",
+                                                     "Weight"))
+    ggplot(Test, aes(fill = Selection, x = Question, y = percentage)) +
+      geom_bar(position = "fill", stat = "identity") +
+      coord_flip() + scale_y_reverse() +
+      labs(title = "What do you worry about on a daily/near daily basis")
   })
 
 })

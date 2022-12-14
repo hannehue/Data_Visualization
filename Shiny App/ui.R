@@ -13,239 +13,121 @@ shinyUI(
                    "Masculinity data visualization",
                    style = "position: relative; top: 50%; transform: translateY(-50%);")),
   
-  # Demographics.
+  # Barchart
   tabPanel(
     "Barchart",
-    # One tab for each plot/table.
     tabsetPanel(
       type = "tabs",
-      # Circle-packing plot of ethnicity and gender.
       tabPanel(
-
-        "Ethnicity and gender",
-
-        # Sidebar panel for controls.
+        "All questions",
         sidebarPanel(
           selectInput(
             inputId = "singleColumn", label = "Single Column",
             choices = colnames(single_Column_Quest)
           ),
-          tags$p(HTML("<b>Hover</b> to see the part name.")),
         ),
-        # Main panel with plot.
         mainPanel(
           plotOutput("mascuPlot") %>%
+            withSpinner()
+        )
+      ),
+      # tabPanel(
+      #   "All questions1",
+      #   sidebarPanel(
+      #     selectInput(
+      #       inputId = "singleColumn1", label = "Single Column",
+      #       choices = colnames(single_Column_Quest)
+      #     ),
+      #   ),
+      #   mainPanel(
+      #     plotOutput("circlePacking") %>%
+      #       withSpinner()
+      #   )
+      # ),
+      
+      tabPanel(
+        "Answers by Ethnicity",
+        sidebarPanel(
+          tags$p(HTML("What is the general spread of races over age that has taken this survey?")),
+        ),
+        mainPanel(
+          plotOutput("pieChart") %>%
             withSpinner()
         )
       ),
     )
   ),
   
-  
-  
-  
-  # Fashion
   tabPanel(
     "stacked bar chart",
-    # One tab for each plot/table.
     tabsetPanel(
       type = "tabs",
-      # Treemap of hair style and color.
       tabPanel(
         "stacked_bar_chart",
-        # Sidebar panel for controls.
         sidebarPanel(
-          tags$p(span("Daniels stacked bar chart", style = "color:red")),
+          tags$p(span("Stacked bar chart", style = "color:red")),
         ),
-        # Main panel with plot.
         mainPanel(
           plotOutput("stacked_bar_chart") %>%
             withSpinner()
         )
       ),
 
-      # Treemap of clothing type and color.
       tabPanel(
-
-        "Clothing",
-
-        # Sidebar panel for controls.
+        "Horizontal barplot 2",
         sidebarPanel(
-          pickerInput(
-            "clothesTreemapThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
-          ),
-          selectInput(
-            "clothesTreemapOrderPicker", "Adjust order of levels:",
-            choices = list("Color, then type" = "color.first",
-                           "Type, then color" = "type.first")
-          ),
-          checkboxInput(
-            "clothesTreemapShowOther", tags$b("Show \"other\" pieces (with no type)"),
-            value = T
-          ),
-          pickerInput(
-            "clothesTreemapTypePicker", "Filter to one or more clothing types:",
-            choices = c(), multiple = T
-          ),
-          tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
-          tags$p(HTML("<b>Click</b> to drill down.  At the lowest level, <b>hover</b> to see the part name.")),
-          tags$p(HTML("Clothes for the <b>upper</b> and <b>lower</b> body are shown separately.")),
-          tags$p(HTML("<b>Type</b> is inferred from keywords in the part name.")),
-          tags$p(HTML("A part with no keywords is classified as <b>\"Other\"</b>.")),
-          tags$p(HTML("A single part may have <b>multiple types</b>; in that case, it's counted in <i>all</i> relevant types.")),
-          tags$p(HTML("<b>Color</b> is inferred from the color word(s) immediately before the type keyword, if any (e.g., \"<u>White</u> Shirt\").  Otherwise, the color of the piece is used.  This method is not 100&percnt; accurate; it misses cases like \"<u>White</u> Button-Down Shirt\"."))
         ),
-
+        
         # Main panel with plot.
-        mainPanel(div(
-          style = "position:relative",
-          htmlOutput("clothesTreemapUI") %>%
-            withSpinner()
-        ))
-
-     ),
-
-     # Treemap of accessories.
-     tabPanel(
-
-       "Accessories",
-
-       # Sidebar panel for controls.
-       sidebarPanel(
-         pickerInput(
-           "accessoriesTreemapThemePicker", "Filter to one or more themes:",
-           choices = c(), multiple = T
-         ),
-         tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
-         tags$p(HTML("<b>Click</b> to drill down.  At the lowest level, <b>hover</b> to see the part name.")),
-         tags$p(HTML("<b>Accessories</b> are inferred from keywords in the part name.")),
-         tags$p(HTML("A single part may have <b>multiple accessories</b>; in that case, it's counted in <i>all</i> relevant accessories.")),
-         tags$p(HTML("<b>Color</b> is not included because it can't consistently be inferred from the dataset.  The color of the accessory may be the color of the piece, a color noted in the name of the part, or not indicated at all."))
-       ),
-
-       # Main panel with plot.
-       mainPanel(div(
-         style = "position:relative",
-         htmlOutput("accessoriesTreemapUI") %>%
-           withSpinner()
-       ))
-
-     ),
-
-     # Table for finding sets with pieces with particular hair styles,
-     # clothing types, or accessories.
-     tabPanel(
-
-       "Find sets with a specific item",
-
-       # Sidebar panel for controls.
-       sidebarPanel(
-         pickerInput(
-           "fashionSetThemePicker", "Filter to one or more themes:",
-           choices = c(), multiple = T
-         ),
-         pickerInput(
-           "fashionSetColorPicker", "Filter to one or more colors:",
-           choices = c(), multiple = T
-         ),
-         pickerInput(
-           "fashionSetHairStylePicker", "Filter to one or more hair styles",
-           choices = c(), multiple = T
-         ),
-         pickerInput(
-           "fashionSetClothingTypePicker", "Filter to one or more clothing types",
-           choices = c(), multiple = T
-         ),
-         pickerInput(
-           "fashionSetAccessoryPicker", "Filter to one or more accessories",
-           choices = c(), multiple = T
-         ),
-         tags$p(HTML("<b>Color</b> is the color of the piece, which may be different from the color of various items printed on the piece."))
-       ),
-
-       # Main panel with table.
-       mainPanel(
-         dataTableOutput("fashionSets")
-       )
-
+        mainPanel(plotOutput("horisontalPlot_1") %>%
+                    withSpinner()
+        )
+      ),
+      
+      tabPanel(
+        "Horizontal barplot 2",
+        sidebarPanel(
+        ),
+        
+        # Main panel with plot.
+        mainPanel(plotOutput("horisontalPlot_2") %>%
+                    withSpinner()
+        )
+      )
+      
      )
-
-    )
-
   ),
   
   # Density chart.
   tabPanel(
+    "Multicolumn",
 
-    "Density chart",
-
-    # One tab for each plot/table.
     tabsetPanel(
-
       type = "tabs",
-
-      # Polar plot of moods.
       tabPanel(
 
         "Mood counts",
-
-        # Sidebar panel for controls.
         sidebarPanel(
-          pickerInput(
-            "moodsPolarThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
-          ),
-          pickerInput(
-            "moodsPolarGenderPicker", "Filter to one or more genders:",
-            choices = c(),
-            options = list(`actions-box` = T),
-            multiple = T
-          ),
-          tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
-          tags$p(HTML("<b>Hover</b> to see the number of pieces.")),
-          tags$p(HTML("<b>Mood</b> is inferred from keywords in the part name (heads only).")),
-          tags$p(HTML("A single head may have <b>multiple moods</b>; in that case, it's counted in <i>all</i> relevant moods."))
+          tags$p(HTML("<h3>Which of the following do you worry about on a daily or near daily basis? (Select all that apply.)</h3>")),
+          tags$p(HTML("Your height")),
+          tags$p(HTML("Your weight")),
+          tags$p(HTML("Your hair or hairline")),
+          tags$p(HTML("Your physique")),
+          tags$p(HTML("Appearance of your genitalia")),
+          tags$p(HTML("Your clothing or style")),
+          tags$p(HTML("Sexual performance or amount of sex")),
+          tags$p(HTML("Your mental health")),
+          tags$p(HTML("Your physical health")),
+          tags$p(HTML("Your finances, including your current or future income, assets, or debt")),
+          tags$p(HTML("Your ability to provide for your family, current or anticipated")),
+          tags$p(HTML("None of the above")),
         ),
-
-        # Main panel with plot.
-        mainPanel(
-          uiOutput("moodsPolarPlotUI") %>%
-            withSpinner()
-        )
-
-      ),
-
-      # Bar plot of moods.
-      tabPanel(
-
-        "Mood percents",
-
-        # Sidebar panel for controls.
-        sidebarPanel(
-          pickerInput(
-            "moodsMoodPicker", "Choose mood to plot:",
-            choices = c("Happy", "Sad", "Angry", "Afraid"),
-            selected = "Happy",
-            multiple = F
-          ),
-          pickerInput(
-            "moodsOrderPicker", "Order by:",
-            choices = c("Percent of pieces with mood", "Total pieces", "Theme name"),
-            selected = "Percent of pieces with mood",
-            multiple = F
-          ),
-          tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
-          tags$p(HTML("<b>Saturation</b> represents the number of pieces in the theme.")),
-          tags$p(HTML("<b>Hover</b> to see the number of pieces and percent with the chosen mood."))
-        ),
-
-        # Main panel with plot.
-        mainPanel(
-          highchartOutput("moodsBarPlot",
-                          width = "700px", height = "2000px")
-        )
-
+        
+          # Main panel with plot.
+          mainPanel(
+            plotOutput("multiColumn") %>%
+              withSpinner()
+          )
       ),
 
       # Table for finding sets with pieces with a particular mood.
@@ -277,17 +159,15 @@ shinyUI(
         mainPanel(
           dataTableOutput("moodsSets")
         )
-
       )
-
     )
 
   ),
   
-  # Ecology.
+  # Later todo
   tabPanel(
 
-    "Later todo",
+    "Research questions",
 
     # One tab for each plot/table.
     tabsetPanel(
@@ -297,119 +177,23 @@ shinyUI(
       # Dendrogram of plants.
       tabPanel(
 
-        "Plants",
+        "Questions",
 
         # Sidebar panel for controls.
         sidebarPanel(
-          pickerInput(
-            "plantsDendrogramThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
-          ),
-          tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
-          tags$p(span(HTML("<b>Hover</b> over a node to see a list of pieces.  Filled nodes have no pieces."))),
-          tags$p(span(HTML("<b>Double-click</b> on a node to collapse its daughters."))),
-          tags$p(span(HTML("<b>Scroll</b> to zoom in or out.  <b>Click and drag</b> to move the tree."))),
-          tags$p(span(HTML("<b>\"Species\"</b> (very roughly speaking) is inferred from keywords in the part name.  <b>Phylogenetic trees</b> (even rougher) are constructed from hypernyms in WordNet.")))
+          tags$p(HTML("<h3>How does mens rating of their masculinity reflect how physically intimate they are with each other, based on their sexuality?</h3>")),
+          tags$p(HTML("<h3>What is the general spread of races over age that has taken this survey?</h3>")),
+          tags$p(HTML("<h4>How do questions, such as self perceived masculinity, come across in different age and race groups?</h4>")),
+          tags$p(HTML("<h4>How does race and/or income affect how masculine men perceive themselves? And does this have a correlation to how often they cry or show physical affection?</h4>")),
+          
         ),
-
-        # Main panel with dendrogram.
-        mainPanel(
-          uiOutput("plantsDendrogram") %>%
-            withSpinner()
-        )
-
-      ),
-
-      # Dendrogram of animals.
-      tabPanel(
-
-        "Animals",
-
-        # Sidebar panel for controls.
-        sidebarPanel(
-          pickerInput(
-            "animalsDendrogramThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
-          ),
-          tags$p(span("Large graphs (e.g., of the full dataset) may take a few seconds to render.", style = "color:red")),
-          tags$p(span(HTML("<b>Hover</b> over a node to see a list of pieces.  Filled nodes have no pieces."))),
-          tags$p(span(HTML("<b>Double-click</b> on a node to collapse its daughters."))),
-          tags$p(span(HTML("<b>\"Species\"</b> (very roughly speaking) is inferred from keywords in the part name.  <b>Phylogenetic trees</b> (even rougher) are constructed from hypernyms in WordNet.")))
-        ),
-
-        # Main panel with dendrogram.
-        mainPanel(
-          uiOutput("animalsDendrogram") %>%
-            withSpinner()
-        )
-
-      ),
-
-      # Bar plot of species diversity.
-      tabPanel(
-
-        "Species diversity by theme",
-
-        # Sidebar panel for controls.
-        sidebarPanel(
-          pickerInput(
-            "ecologyMeasurePicker", "Choose measure to plot:",
-            choices = c("Species diversity of plants", "Species diversity of animals"),
-            selected = "Species diversity of plants",
-            multiple = F
-          ),
-          pickerInput(
-            "ecologyOrderPicker", "Order by:",
-            choices = c("Measure", "Number of pieces", "Theme name"),
-            selected = "Measure",
-            multiple = F
-          ),
-          tags$p(HTML("<b>Hover</b> to see the number of pieces and measure value.")),
-          tags$p(HTML("<b>Species diversity</b> is the Shannon entropy (base 2) of \"species\" (deduced from keywords in the part name) over all pieces.")),
-          tags$p(HTML("<b>Saturation</b> represents the number of pieces in the theme."))
-        ),
-
-        # Main panel with plot.
-        mainPanel(
-          highchartOutput("ecologyDiversity",
-                          width = "700px", height = "2000px")
-        )
-
-      ),
-
-      # Table for finding sets with pieces for a particular plant/animal.
-      tabPanel(
-
-        "Find sets with a specific plant or animal",
-
-        # Sidebar panel for controls.
-        sidebarPanel(
-          pickerInput(
-            "ecologySetThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
-          ),
-          pickerInput(
-            "ecologySetColorPicker", "Filter to one or more colors:",
-            choices = c(), multiple = T
-          )
-        ),
-
-        # Main panel with table.
-        mainPanel(
-          dataTableOutput("ecologySets")
-        )
-
       )
-
     )
-
   ),
   
   # About and credits.
   tabPanel(
-    
     "About",
-    
     # Various tabs.
     tabsetPanel(
       
@@ -417,25 +201,18 @@ shinyUI(
       tabPanel(
         "Overview",
         tags$h1("Scope"),
-        tags$p(HTML("This collection of visualizations addresses the question, \"What is it like to live in the Lego world?\"  In other words, if you're Wyldstyle, what kinds of people do you meet?  How are they feeling?  What plants and animals do you find around you?")),
-        tags$p(HTML("Think of each theme as an island on the Lego planet.  Each visualization can be faceted by theme, so you can compare fashion, flora and fauna, etc. across themes.")),
-        tags$h1("Approach"),
-        tags$p(HTML("Parts are labeled and categorized using three main sources of information:")),
-        tags$ul(
-          tags$li(HTML("The part category (e.g., \"Minifig Heads\" or \"Plants and Animals\") specified in the database")),
-          tags$li(HTML("The hexadecimal part color specified in the database")),
-          tags$li(HTML("Keywords in the part name"))
-        ),
-        tags$p(HTML("The keywords that map part names to categories involve more-or-less hand-curated lists and some <i>very</i> basic text processing (mostly regular expressions).  The process is <b>not 100% accurate</b>; there are plenty of false positives and false negatives.  But it's good enough for a first pass.")),
-        tags$h1("GitHub"),
-        tags$p(HTML("Source code is available at <a href=\"https://github.com/kaplanas/Shiny-Lego\">https://github.com/kaplanas/Shiny-Lego</a>."))
+        tags$p(HTML("In this report we use graphs generated from a masculinity survey. It was created by FiveThirtyEight and WNYC. We strive to highlight the correlations between perceived and felt masculinity and how it can impact a man in different ways, across different ages, races, and sexualities.")),
+        tags$h1("Contributers"),
+        tags$p(HTML("Daniel Bahrami: dabah20@student.sdu.dk")),
+        tags$p(HTML("Hans: haped20@student.sdu.dk")),
+        tags$p(HTML("Jesper: jedie20@student.sdu.dk")),
+        tags$p(HTML("Jonas: jobel20@student.sdu.dk")),
       ),
-      
       # Credits.
       tabPanel(
         "Credits",
         tags$h1("Datasets"),
-        tags$p(HTML("The data is from <a href=\"https://github.com/fivethirtyeight/data/tree/master/masculinity-survey> FiveThirtyEight’s study </a> in collaboration with WNYC, on masculinity and what effects it has on people in different categories. It consists of a series of questions, where the individual can answer typically one of 5 possibilities, usually varying from ‘very much’ to ‘not at all’ and ‘no answer’, with all of them adding up to 100% of people asked. The categories consist of ‘Adult men’, then three age categories of ‘18-34’, ‘35-64’ and ‘65 and up’. After these there are categories for ‘white’ and ‘non-white’, then ‘has children’ and ‘no children’, and lastly sexual orientation summed up as ‘straight’ and ‘gay/bisexual’. ")),
+        tags$p(HTML("The data is from <a href=\"https://github.com/fivethirtyeight/data/tree/master/masculinity-survey\"> FiveThirtyEight’s study </a> in collaboration with WNYC, on masculinity and what effects it has on people in different categories. It consists of a series of questions, where the individual can answer typically one of 5 possibilities, usually varying from ‘very much’ to ‘not at all’ and ‘no answer’, with all of them adding up to 100% of people asked. The categories consist of ‘Adult men’, then three age categories of ‘18-34’, ‘35-64’ and ‘65 and up’. After these there are categories for ‘white’ and ‘non-white’, then ‘has children’ and ‘no children’, and lastly sexual orientation summed up as ‘straight’ and ‘gay/bisexual’. ")),
       ),
     )
   )

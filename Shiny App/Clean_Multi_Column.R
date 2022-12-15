@@ -19,3 +19,17 @@ ggplot(Test, aes(fill = Selection, x = Question, y = percentage)) +
 
 # SAVE THIS FUCKING LINK
 # https://gist.github.com/ale-lazic/f9754aff54acfcc0e32718d5685817c3
+
+
+worry_about
+
+test2 <- data.frame(q1 = worry_about$q0008_0001, race = worry_about$q0028)
+
+test2 %>%
+  summarise(n_notSelected = sum(q1 == "Not selected"), nSelected = sum(q1 == "Your height"))
+
+test3 <- test2 %>%
+  group_by(race)
+
+test3 %>%
+  summarise(n_notSelected = sum(q1 == "Not selected"), nSelected = sum(q1 == "Your height"))

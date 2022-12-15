@@ -1,3 +1,4 @@
+library(tidyverse)
 library(dplyr)
 library(tidyr)
 library(tibble)
@@ -40,6 +41,9 @@ formatted_data <- read_csv("data_files/raw-responses.csv")
 #     "q0024",
 #     "q0026"
 #   ))
+
+Formatted_Multicolum <- read_csv2("data_files/Clean_Multi_Column.csv")
+
 
 single_Column_Quest = formatted_data[, c(
   "q0001",

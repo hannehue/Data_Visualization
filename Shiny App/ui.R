@@ -106,7 +106,7 @@ shinyUI(
       type = "tabs",
       tabPanel(
 
-        "Mood counts",
+        "Worrying",
         sidebarPanel(
           tags$p(HTML("<h3>Which of the following do you worry about on a daily or near daily basis? (Select all that apply.)</h3>")),
           tags$p(HTML("Your height")),
@@ -133,35 +133,66 @@ shinyUI(
       # Table for finding sets with pieces with a particular mood.
       tabPanel(
 
-        "Find sets with a specific mood",
+        "Animated Stacked Barchart",
 
         # Sidebar panel for controls.
         sidebarPanel(
-          pickerInput(
-            "moodsSetThemePicker", "Filter to one or more themes:",
-            choices = c(), multiple = T
-          ),
-          pickerInput(
-            "moodsSetGenderPicker", "Filter to one or more genders:",
-            choices = c(),
-            options = list(`actions-box` = T),
-            multiple = T
-          ),
-          pickerInput(
-            "moodsSetMoodPicker", "Filter to one or more moods:",
-            choices = c("Happy", "Sad", "Angry", "Afraid"),
-            options = list(`actions-box` = T),
-            multiple = T
-          )
         ),
 
         # Main panel with table.
         mainPanel(
-          dataTableOutput("moodsSets")
+          img(
+            src ="animation.gif",
+            width = "750px",
+            height = "600px"
+          )
         )
       )
     )
 
+  ),
+  
+  
+  # Numeric Data
+  tabPanel(
+    
+    "Numeric Data",
+    
+    # One tab for each plot/table.
+    tabsetPanel(
+      
+      type = "tabs",
+      
+      # Dendrogram of plants.
+      tabPanel(
+        
+        "Count plot",
+        
+        # Sidebar panel for controls.
+        sidebarPanel(
+          
+        ),
+        
+        mainPanel(
+          plotlyOutput("countPlot") %>%
+            withSpinner()
+        )
+      ),
+      tabPanel(
+        
+        "Distribution Plot",
+        
+        # Sidebar panel for controls.
+        sidebarPanel(
+          
+        ),
+        
+        mainPanel(
+          plotOutput("distPlot") %>%
+            withSpinner()
+        )
+      )
+    )
   ),
   
   # Later todo

@@ -22,6 +22,8 @@ library(rdrop2)
 library(lubridate)
 library(readr)
 library(hrbrthemes)
+library(gifski)
+library(gganimate)
 
 
 raw_data <- read_csv("data_files/raw-responses.csv")
@@ -205,5 +207,38 @@ colnames(single_Column_Quest) = c(
 #   "orientation",
 #   "weight"
 # )
+
+
+rankings <- data.frame(
+  q01 = formatted_data$q0001, # How masculine do you feel
+  q02 = formatted_data$q0002, # How important is it, that others see you as masculine
+  q18 = formatted_data$q0018, # How often do you try to be the one who pays when on a date
+  q29 = formatted_data$q0029, # What is the last grade of school you completed
+  stringsAsFactors = TRUE
+)
+
+rank_num <- sapply(rankings, unclass)
+rank_num <- data.frame(rank_num)
+
+numeric_values <- data.frame(q01 = rank_num$q01, # How masculine do you feel
+                             q02 = rank_num$q02, # How important is it, that others see you as masculine
+                             q18 = rank_num$q18, # How often do you try to be the one who pays when on a date
+                             q29 = rank_num$q29, # What is the last grade of school you completed
+                             Race = formatted_data$q0028,
+                             Earnings = formatted_data$q0034,
+                             Age = formatted_data$age3,
+                             Kids = formatted_data$kids,
+                             stringsAsFactors = TRUE) 
+
+colnames(numeric_values) = c(
+  "How Masculine do you feel?",
+  "How important is it, that others see you as masculine?",
+  "How often do you try to pay for a date",
+  "What is the last grade of school you completed",
+  "Race",
+  "Earnings",
+  "Age",
+  "Kids"
+)
 
 

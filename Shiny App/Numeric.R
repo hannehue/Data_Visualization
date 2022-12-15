@@ -76,9 +76,9 @@ ggplot(numeric_values,aes(race, q01)) +
   theme(legend.position = "none")
 
 
-ggplot(numeric_values, aes( x = q01, group = race, fill = race,)) +
+ggplot(numeric_values, aes( x = `How important is it, that others see you as masculine?`, group = Race, fill = Race,)) +
   geom_density(adjust = 1, alpha = 0.3) +
-  facet_wrap(~race) +
+  facet_wrap(~Race) +
   theme(legend.position = "none")
 
 ggplot(numeric_values, aes( x = q01, group = race, fill = race,)) +

@@ -108,20 +108,18 @@ shinyServer(
   })
   
   output$multiColumn <- renderPlot({
-    library(tidyverse)
-    Test <- read_excel("data_files/Clean_Multi_Column.xlsx")
     
-    Test <- Test %>%
+    Formatted_Multicolum <- Formatted_Multicolum %>%
       group_by(Question) %>%
       mutate(percentage = Value / sum(Value) * 100)
     
-    Test$Selection = as.factor(Test$Selection)
-    Test$Selection = factor(Test$Selection, levels = c("Selected", "Not Selected"))
-    Test$percentage = round(Test$percentage, 0)
-    Test$Question = factor(Test$Question, levels = c("None of the above", "Height", "Appearance of genetalia", "Clothing style", "Hair", "Sexual performance or amount of sex",
+    Formatted_Multicolum$Selection = as.factor(Formatted_Multicolum$Selection)
+    Formatted_Multicolum$Selection = factor(Formatted_Multicolum$Selection, levels = c("Selected", "Not Selected"))
+    Formatted_Multicolum$percentage = round(Formatted_Multicolum$percentage, 0)
+    Formatted_Multicolum$Question = factor(Formatted_Multicolum$Question, levels = c("None of the above", "Height", "Appearance of genetalia", "Clothing style", "Hair", "Sexual performance or amount of sex",
                                                      "Mental health", "Ability to provide for family", "Physique", "Your finances", "Physical health",
                                                      "Weight"))
-    ggplot(Test, aes(fill = Selection, x = Question, y = percentage)) +
+    ggplot(Formatted_Multicolum, aes(fill = Selection, x = Question, y = percentage)) +
       geom_bar(position = "fill", stat = "identity") +
       coord_flip() + scale_y_reverse() +
       scale_fill_manual(values = c("#E0912A", "#005F94")) +

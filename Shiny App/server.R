@@ -114,15 +114,15 @@ shinyServer(
       mutate(percentage = Value / sum(Value) * 100)
     
     Formatted_Multicolum$Selection = as.factor(Formatted_Multicolum$Selection)
-    Formatted_Multicolum$Selection = factor(Formatted_Multicolum$Selection, levels = c("Selected", "Not Selected"))
+    Formatted_Multicolum$Selection = factor(Formatted_Multicolum$Selection, levels = c("Not Selected", "Selected"))
     Formatted_Multicolum$percentage = round(Formatted_Multicolum$percentage, 0)
     Formatted_Multicolum$Question = factor(Formatted_Multicolum$Question, levels = c("None of the above", "Height", "Appearance of genetalia", "Clothing style", "Hair", "Sexual performance or amount of sex",
                                                      "Mental health", "Ability to provide for family", "Physique", "Your finances", "Physical health",
                                                      "Weight"))
     ggplot(Formatted_Multicolum, aes(fill = Selection, x = Question, y = percentage)) +
       geom_bar(position = "fill", stat = "identity") +
-      coord_flip() + scale_y_reverse() +
-      scale_fill_manual(values = c("#E0912A", "#005F94")) +
+      coord_flip() + 
+      scale_fill_manual(values = c("#005F94", "#E0912A")) +
       labs(title = "What do you worry about on a daily/near daily basis")
   })
 

@@ -48,17 +48,29 @@ ggplot(numeric_values,aes(q02, q01)) +
   geom_count(color = "#E0912A") +
   scale_size_area(max_size = 20) +
   labs(
-    y = "masculinity",
-    x = "importance"
-  )
+    y = "masculinity: 1 = Not masculine, 5 = Very masculine",
+    x = "importance: 1 = Not important, 5 = very important"
+  ) +
+  theme(legend.position = "none")
+
+
+ggplot(numeric_values,aes(race, q01)) +
+  geom_count(color = "#E0912A") +
+  scale_size_area(max_size = 20) +
+  theme(legend.position = "none")
 
 
 ggplot(numeric_values, aes( x = q01, group = race, fill = race,)) +
   geom_density(adjust = 1, alpha = 0.3) +
-  facet_wrap(~race)
+  facet_wrap(~race) +
+  theme(legend.position = "none")
 
 ggplot(numeric_values, aes( x = q01, group = race, fill = race,)) +
   geom_density(adjust = 1, alpha = 0.3)
+
+ggplot(numeric_values, aes( x = q01, fill = "red")) +
+  geom_density(adjust = 1, alpha = 0.3) +
+  theme(legend.position = "none")
 
 
 

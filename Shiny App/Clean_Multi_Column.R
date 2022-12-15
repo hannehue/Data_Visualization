@@ -23,13 +23,22 @@ ggplot(Test, aes(fill = Selection, x = Question, y = percentage)) +
 
 worry_about
 
-test2 <- data.frame(q1 = worry_about$q0008_0001, race = worry_about$q0028)
+test2 <- data.frame(q = worry_about$q0008_0012, race = worry_about$q0028)
 
 test2 %>%
-  summarise(n_notSelected = sum(q1 == "Not selected"), nSelected = sum(q1 == "Your height"))
+  summarise(n_notSelected = sum(q == "Not selected"), nSelected = sum(q != "Not selected"))
 
 test3 <- test2 %>%
   group_by(race)
 
 test3 %>%
-  summarise(n_notSelected = sum(q1 == "Not selected"), nSelected = sum(q1 == "Your height"))
+  summarise(n_notSelected = sum(q == "Not selected"), nSelected = sum(q != "Not selected"))
+
+
+anim <- read.csv2("Shiny App/data_files/Animate.csv")
+anim
+view(anim)
+
+anim <- anim %>%
+  group_by(Question, Race) %>%
+  mutate(notSelectedPerc = Not.Selected / sum(Not.Selected + Selected) * 100 ,SelectedPerc = Selected / sum(Not.Selected + Selected) * 100 )

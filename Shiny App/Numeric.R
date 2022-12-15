@@ -1,5 +1,6 @@
 library(tidyverse)
 library(hrbrthemes)
+library(plotly)
 
 rankings <- data.frame(
   q01 = formatted_data$q0001, # How masculine do you feel
@@ -29,29 +30,44 @@ numeric_values <- data.frame(q01 = rank_num$q01, # How masculine do you feel
                              q02 = rank_num$q02, # How important is it, that others see you as masculine
                              q18 = rank_num$q18, # How often do you try to be the one who pays when on a date
                              q29 = rank_num$q29, # What is the last grade of school you completed
-                             race = formatted_data$q0028,
-                             earnings = formatted_data$q0034,
-                             age = formatted_data$age3,
-                             kids = formatted_data$kids,
+                             Race = formatted_data$q0028,
+                             Earnings = formatted_data$q0034,
+                             Age = formatted_data$age3,
+                             Kids = formatted_data$kids,
                              stringsAsFactors = TRUE) 
 
 
-ggplot(numeric_values, aes(q01, race)) +
+ggplot(numeric_values, aes(q01, Race)) +
   geom_point()
+
+
+colnames(numeric_values) = c(
+  "How Masculine do you feel?",
+  "How important is it, that others see you as masculine?",
+  "How often do you try to pay for a date",
+  "What is the last grade of school you completed",
+  "Race",
+  "Earnings",
+  "Age",
+  "Kids"
+)
+
  
 
-ggplot(numeric_values, aes(race, q01)) +
+ggplot(numeric_values, aes(Race, q01)) +
   geom_boxplot()
 
 
-ggplot(numeric_values,aes(q02, q01)) +
+t <- ggplot(numeric_values,aes(`How important is it, that others see you as masculine?`, 
+                          `How Masculine do you feel?`)) +
   geom_count(color = "#E0912A") +
   scale_size_area(max_size = 20) +
   labs(
     y = "masculinity: 1 = Not masculine, 5 = Very masculine",
-    x = "importance: 1 = Not important, 5 = very important"
-  ) +
+    x = "importance: 1 = Not important, 5 = very important") +
   theme(legend.position = "none")
+
+ggplotly(t)
 
 
 ggplot(numeric_values,aes(race, q01)) +

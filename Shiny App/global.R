@@ -24,6 +24,7 @@ library(readr)
 library(hrbrthemes)
 library(gifski)
 library(gganimate)
+library(plotly)
 
 
 raw_data <- read_csv("data_files/raw-responses.csv")

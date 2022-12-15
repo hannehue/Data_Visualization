@@ -71,27 +71,3 @@ ggplot(numeric_values, aes( x = q01, group = race, fill = race,)) +
 ggplot(numeric_values, aes( x = q01, fill = "red")) +
   geom_density(adjust = 1, alpha = 0.3) +
   theme(legend.position = "none")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

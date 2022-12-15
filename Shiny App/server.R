@@ -125,5 +125,24 @@ shinyServer(
       scale_fill_manual(values = c("#005F94", "#E0912A")) +
       labs(title = "What do you worry about on a daily/near daily basis")
   })
+  
+  output$countPlot <- renderPlotly({
+    t <- ggplot(numeric_values,aes(`How important is it, that others see you as masculine?`, 
+                                   `How Masculine do you feel?`)) +
+      geom_count(color = "#E0912A") +
+      scale_size_area(max_size = 15) +
+      labs(
+        y = "masculinity: 1 = Not masculine, 5 = Very masculine",
+        x = "importance: 1 = Not important, 5 = very important") +
+      theme(legend.position = "none")
+    
+    ggplotly(t)
+  })
 
+  output$distPlot <- renderPlot({
+    ggplot(numeric_values, aes( x = `How important is it, that others see you as masculine?`, group = Race, fill = Race,)) +
+      geom_density(adjust = 1, alpha = 0.3) +
+      facet_wrap(~Race) +
+      theme(legend.position = "none")
+  })
 })

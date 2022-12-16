@@ -142,9 +142,7 @@ shinyUI(
         # Main panel with table.
         mainPanel(
           img(
-            src ="animation.gif",
-            width = "750px",
-            height = "600px"
+            src ="animation3.gif",
           )
         )
       )

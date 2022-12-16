@@ -12,9 +12,9 @@ shinyUI(
   title = div(span("Data Visualization - Masculinity Survey",
                    style = "position: relative; top: 50%; transform: translateY(-50%);")),
   
-  # Barchart
+  # Bar Chart
   tabPanel(
-    "Barchart",
+    "Bar Chart",
     tabsetPanel(
       type = "tabs",
       tabPanel(
@@ -58,14 +58,14 @@ shinyUI(
   ),
   
   tabPanel(
-    "stacked bar chart",
+    "Stacked Bar Chart",
     tabsetPanel(
       type = "tabs",
       tabPanel(
-        "stacked_bar_chart",
         sidebarPanel(
           tags$p(span("Stacked bar chart", style = "color:red")),
         ),
+        "Stacked Bar Chart",
         mainPanel(
           plotOutput("stacked_bar_chart") %>%
             withSpinner()
@@ -73,9 +73,9 @@ shinyUI(
       ),
 
       tabPanel(
-        "Horizontal barplot 2",
         sidebarPanel(
         ),
+        "Horizontal Bar Chart",
         
         # Main panel with plot.
         mainPanel(plotOutput("horisontalPlot_1") %>%
@@ -84,9 +84,9 @@ shinyUI(
       ),
       
       tabPanel(
-        "Horizontal barplot 2",
         sidebarPanel(
         ),
+        "Horizontal Bar Chart 2",
         
         # Main panel with plot.
         mainPanel(plotOutput("horisontalPlot_2") %>%
@@ -105,9 +105,9 @@ shinyUI(
       type = "tabs",
       tabPanel(
 
-        "Worrying",
+        "Horizontal Bar Chart",
         sidebarPanel(
-          tags$p(HTML("<h3>Which of the following do you worry about on a daily or near daily basis? (Select all that apply.)</h3>")),
+          tags$p(HTML("<h3>Which of the following do you worry about on a daily or near daily basis? </h3>")),
           tags$p(HTML("Your height")),
           tags$p(HTML("Your weight")),
           tags$p(HTML("Your hair or hairline")),
@@ -132,11 +132,11 @@ shinyUI(
       # Table for finding sets with pieces with a particular mood.
       tabPanel(
 
-        "Animated Stacked Barchart",
 
         # Sidebar panel for controls.
         sidebarPanel(
         ),
+        "Animated Horizontal Bar Chart",
 
         # Main panel with table.
         mainPanel(
@@ -153,7 +153,7 @@ shinyUI(
   # Numeric Data
   tabPanel(
     
-    "Numeric Data",
+    "Numeric data",
     
     # One tab for each plot/table.
     tabsetPanel(
@@ -163,12 +163,12 @@ shinyUI(
       # Dendrogram of plants.
       tabPanel(
         
-        "Count plot",
         
         # Sidebar panel for controls.
         sidebarPanel(
           
         ),
+        "Count Plot",
         
         mainPanel(
           plotlyOutput("countPlot") %>%
@@ -239,7 +239,7 @@ shinyUI(
       # Credits.
       tabPanel(
         "Credits",
-        tags$h1("Datasets"),
+        tags$h1("Dataset"),
         tags$p(HTML("The data is from <a href=\"https://github.com/fivethirtyeight/data/tree/master/masculinity-survey\"> FiveThirtyEight’s study </a> in collaboration with WNYC, on masculinity and what effects it has on people in different categories. It consists of a series of questions, where the individual can answer typically one of 5 possibilities, usually varying from ‘very much’ to ‘not at all’ and ‘no answer’, with all of them adding up to 100% of people asked. The categories consist of ‘Adult men’, then three age categories of ‘18-34’, ‘35-64’ and ‘65 and up’. After these there are categories for ‘white’ and ‘non-white’, then ‘has children’ and ‘no children’, and lastly sexual orientation summed up as ‘straight’ and ‘gay/bisexual’. ")),
       ),
     )

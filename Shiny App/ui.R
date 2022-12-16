@@ -186,15 +186,13 @@ shinyUI(
     tabsetPanel(
       tabPanel(
         "Overview",
-        sidebarPanel(
-          tags$h1("Scope"),
-          tags$p(HTML("In this report we use graphs generated from a masculinity survey. It was created by FiveThirtyEight and WNYC. We strive to highlight the correlations between perceived and felt masculinity and how it can impact a man in different ways, across different ages, races, and sexualities.")),
-          tags$h1("Contributers"),
-          tags$p(HTML("Daniel Bahrami: dabah20@student.sdu.dk")),
-          tags$p(HTML("Hans: haped20@student.sdu.dk")),
-          tags$p(HTML("Jesper: jedie20@student.sdu.dk")),
-          tags$p(HTML("Jonas: jobel20@student.sdu.dk"))
-        )
+        tags$h1("Scope"),
+        tags$p(HTML("In this report we use graphs generated from a masculinity survey. It was created by FiveThirtyEight and WNYC. We strive to highlight the correlations between perceived and felt masculinity and how it can impact a man in different ways, across different ages, races, and sexualities.")),
+        tags$h1("Contributers"),
+        tags$p(HTML("Daniel Bahrami: dabah20@student.sdu.dk")),
+        tags$p(HTML("Hans Pedersen: haped20@student.sdu.dk")),
+        tags$p(HTML("Jesper Diederichsen: jedie20@student.sdu.dk")),
+        tags$p(HTML("Jonas Beltoft: jobel20@student.sdu.dk")),
       ),
       # Credits.
       tabPanel(

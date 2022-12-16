@@ -30,19 +30,6 @@ shinyUI(
             withSpinner()
         )
       ),
-      # tabPanel(
-      #   "All questions1",
-      #   sidebarPanel(
-      #     selectInput(
-      #       inputId = "singleColumn1", label = "Single Column",
-      #       choices = colnames(single_Column_Quest)
-      #     ),
-      #   ),
-      #   mainPanel(
-      #     plotOutput("circlePacking") %>%
-      #       withSpinner()
-      #   )
-      # ),
       
       tabPanel(
         "Answers by Ethnicity",

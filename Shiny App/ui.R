@@ -62,9 +62,6 @@ shinyUI(
     tabsetPanel(
       type = "tabs",
       tabPanel(
-        sidebarPanel(
-          tags$p(span("Stacked bar chart", style = "color:red")),
-        ),
         "Stacked Bar Chart",
         mainPanel(
           plotOutput("stacked_bar_chart") %>%
@@ -73,8 +70,6 @@ shinyUI(
       ),
 
       tabPanel(
-        sidebarPanel(
-        ),
         "Horizontal Bar Chart",
         
         # Main panel with plot.
@@ -84,8 +79,6 @@ shinyUI(
       ),
       
       tabPanel(
-        sidebarPanel(
-        ),
         "Horizontal Bar Chart 2",
         
         # Main panel with plot.
@@ -132,10 +125,6 @@ shinyUI(
       # Table for finding sets with pieces with a particular mood.
       tabPanel(
 
-
-        # Sidebar panel for controls.
-        sidebarPanel(
-        ),
         "Animated Horizontal Bar Chart",
 
         # Main panel with table.
@@ -163,11 +152,6 @@ shinyUI(
       # Dendrogram of plants.
       tabPanel(
         
-        
-        # Sidebar panel for controls.
-        sidebarPanel(
-          
-        ),
         "Count Plot",
         
         mainPanel(
@@ -178,11 +162,6 @@ shinyUI(
       tabPanel(
         
         "Distribution Plot",
-        
-        # Sidebar panel for controls.
-        sidebarPanel(
-          
-        ),
         
         mainPanel(
           plotOutput("distPlot") %>%

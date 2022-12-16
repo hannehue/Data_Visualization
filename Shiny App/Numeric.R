@@ -8,7 +8,7 @@ rankings <- data.frame(
   q18 = formatted_data$q0018, # How often do you try to be the one who pays when on a date
   q29 = formatted_data$q0029, # What is the last grade of school you completed
   stringsAsFactors = TRUE
-  )
+)
 
 #### Checking what numbers mean
 ## Unnessecary after check
@@ -34,7 +34,7 @@ numeric_values <- data.frame(q01 = rank_num$q01, # How masculine do you feel
                              Earnings = formatted_data$q0034,
                              Age = formatted_data$age3,
                              Kids = formatted_data$kids,
-                             stringsAsFactors = TRUE) 
+                             stringsAsFactors = TRUE)
 
 
 ggplot(numeric_values, aes(q01, Race)) +
@@ -52,14 +52,13 @@ colnames(numeric_values) = c(
   "Kids"
 )
 
- 
 
 ggplot(numeric_values, aes(Race, q01)) +
   geom_boxplot()
 
 
-t <- ggplot(numeric_values,aes(`How important is it, that others see you as masculine?`, 
-                          `How Masculine do you feel?`)) +
+t <- ggplot(numeric_values, aes(`How important is it, that others see you as masculine?`,
+                                `How Masculine do you feel?`)) +
   geom_count(color = "#E0912A") +
   scale_size_area(max_size = 20) +
   labs(
@@ -70,20 +69,20 @@ t <- ggplot(numeric_values,aes(`How important is it, that others see you as masc
 ggplotly(t)
 
 
-ggplot(numeric_values,aes(race, q01)) +
+ggplot(numeric_values, aes(race, q01)) +
   geom_count(color = "#E0912A") +
   scale_size_area(max_size = 20) +
   theme(legend.position = "none")
 
 
-ggplot(numeric_values, aes( x = `How important is it, that others see you as masculine?`, group = Race, fill = Race,)) +
+ggplot(numeric_values, aes(x = `How important is it, that others see you as masculine?`, group = Race, fill = Race,)) +
   geom_density(adjust = 1, alpha = 0.3) +
   facet_wrap(~Race) +
   theme(legend.position = "none")
 
-ggplot(numeric_values, aes( x = q01, group = race, fill = race,)) +
+ggplot(numeric_values, aes(x = q01, group = race, fill = race,)) +
   geom_density(adjust = 1, alpha = 0.3)
 
-ggplot(numeric_values, aes( x = q01, fill = "red")) +
+ggplot(numeric_values, aes(x = q01, fill = "red")) +
   geom_density(adjust = 1, alpha = 0.3) +
   theme(legend.position = "none")

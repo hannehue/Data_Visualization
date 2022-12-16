@@ -52,16 +52,16 @@ lolIndex = 1
 asd = 1
 for (j in 1:6) {
   print(lolIndex)
-  
+
   lolIndex = rowindex
-  for (i in 1:12){
+  for (i in 1:12) {
     allAns[[asd]] <- (anim[lolIndex,])
     asd = asd + 1
     allAns[[asd]] <- (anim[lolIndex + 1,])
     asd = asd + 1
     lolIndex = lolIndex + 12
   }
-  
+
   rowindex = rowindex + 2
 }
 
@@ -73,8 +73,8 @@ datfra1$frame <- d
 
 ## Locking Questions
 datfra1$Question = factor(datfra1$Question, levels = c("None of the above", "Height", "Appearance of genetalia", "Clothing style", "Hair", "Sexual performance or amount of sex",
-                                                 "Mental health", "Ability to provide for family", "Physique", "Your finances", "Physical health",
-                                                 "Weight"))
+                                                       "Mental health", "Ability to provide for family", "Physique", "Your finances", "Physical health",
+                                                       "Weight"))
 
 p <- ggplot(datfra1, aes(fill = Selection, x = Question, y = Percentage)) +
   geom_bar(position = "fill", stat = "identity") +
@@ -85,19 +85,18 @@ p <- ggplot(datfra1, aes(fill = Selection, x = Question, y = Percentage)) +
     frame,
     transition_length = 3,
     state_length = 5
-  ) + 
-  ease_aes('sine-in-out')+ theme(axis.text=element_text(size=15),
-      axis.title=element_text(size=15),
-      
-      legend.title = element_text(size=20), #change legend title font size
-      legend.text = element_text(size=15))+ 
-  xlab("Factor") + ylab("Percentage")
+  ) +
+  ease_aes('sine-in-out') +
+  theme(axis.text = element_text(size = 15),
+        axis.title = element_text(size = 15),
 
+        legend.title = element_text(size = 20), #change legend title font size
+        legend.text = element_text(size = 15)) +
+  xlab("Factor") +
+  ylab("Percentage")
 
 
 animate(p, renderer = gifski_renderer("./Shiny App/www/animation.gif"), width = 800, nframes = 120)
-
-
 
 
 ggplot(datfra, aes(fill = Selection, x = Question, y = Percentage)) +

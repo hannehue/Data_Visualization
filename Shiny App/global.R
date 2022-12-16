@@ -82,7 +82,6 @@ worry_about = formatted_data[, c(
 )]
 
 
-
 colnames(single_Column_Quest) = c(
   "1How Masculine do you feel?",
   "2How important is it, that others see you as masculine?",
@@ -97,10 +96,6 @@ colnames(single_Column_Quest) = c(
   "24What is your marriage status",
   "26What is you sexual orientation"
 )
-
-
-
-
 
 
 # colnames(formatted_data) = c(
@@ -229,7 +224,7 @@ numeric_values <- data.frame(q01 = rank_num$q01, # How masculine do you feel
                              Earnings = formatted_data$q0034,
                              Age = formatted_data$age3,
                              Kids = formatted_data$kids,
-                             stringsAsFactors = TRUE) 
+                             stringsAsFactors = TRUE)
 
 colnames(numeric_values) = c(
   "How Masculine do you feel?",

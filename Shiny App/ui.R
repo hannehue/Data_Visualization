@@ -3,14 +3,14 @@ shinyUI(
                   div(style = "padding: 1px 0px; width: '100%'",
                       titlePanel(
                         title = "",
-                        windowTitle = "Masculinity data visualization"
+                        windowTitle = "Data Visualization - Masculinity Survey"
                       )
                   ),
                   navbarPage(
   
   # Application title.
   title = div(span(img(src = "lego_head_small.png"),
-                   "Masculinity data visualization",
+                   "Data Visualization - Masculinity Survey",
                    style = "position: relative; top: 50%; transform: translateY(-50%);")),
   
   # Barchart

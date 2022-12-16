@@ -9,8 +9,7 @@ shinyUI(
                   navbarPage(
   
   # Application title.
-  title = div(span(img(src = "lego_head_small.png"),
-                   "Data Visualization - Masculinity Survey",
+  title = div(span("Data Visualization - Masculinity Survey",
                    style = "position: relative; top: 50%; transform: translateY(-50%);")),
   
   # Barchart

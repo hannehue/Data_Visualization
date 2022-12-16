@@ -209,8 +209,8 @@ shinyUI(
 
         # Sidebar panel for controls.
         sidebarPanel(
-          tags$p(HTML("<h3>How does mens rating of their masculinity reflect how physically intimate they are with each other, based on their sexuality?</h3>")),
-          tags$p(HTML("<h3>What is the general spread of races over age that has taken this survey?</h3>")),
+          tags$p(HTML("<h4>How does mens rating of their masculinity reflect how physically intimate they are with each other, based on their sexuality?</h3>")),
+          tags$p(HTML("<h4>What is the general spread of races over age that has taken this survey?</h3>")),
           tags$p(HTML("<h4>How do questions, such as self perceived masculinity, come across in different age and race groups?</h4>")),
           tags$p(HTML("<h4>How does race and/or income affect how masculine men perceive themselves? And does this have a correlation to how often they cry or show physical affection?</h4>")),
           

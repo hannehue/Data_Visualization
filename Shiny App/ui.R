@@ -1,36 +1,13 @@
 shinyUI(
   fluidPage(theme = "style.css",
-            div(style = "padding: 1px 0px; width: '100%'",
-                titlePanel(
+    div(style = "padding: 1px 0px; width: '100%'",
+      titlePanel(
                   title = "",
                   windowTitle = "Data Visualization - Masculinity Survey"
                 )
             ),
-            navbarPage(
+  navbarPage(
 
-              # Application title.
-              title = div(span("Data Visualization - Masculinity Survey",
-                               style = "position: relative; top: 50%; transform: translateY(-50%);")),
-
-              # Bar Chart
-              tabPanel(
-                "Bar Chart",
-                tabsetPanel(
-                  type = "tabs",
-                  tabPanel(
-                    "All questions",
-                    sidebarPanel(
-                      selectInput(
-                        inputId = "singleColumn", label = "Single Column",
-                        choices = colnames(single_Column_Quest)
-                      ),
-                    ),
-                    mainPanel(
-                      plotOutput("mascuPlot") %>%
-                        withSpinner()
-                    )
-                  ),
-                  navbarPage(
   # Application title.
   title = div(span(img(src = "lego_head_small.png"),
                    "Masculinity data visualization",
@@ -49,7 +26,7 @@ shinyUI(
             choices = colnames(single_Column_Quest)
           ),
           tags$p(HTML("<h3>Barchart</h3>")),
-          tags$p(HTML("The bar chart shows the distribution of answers to each question in the survey on masculinity taken by adult men. The chart includes separate bars for different age groups (18-34, 35-64, and 65+). The height of each bar corresponds to the number of respondents who answered the survey question and fell into the corresponding age and racial group.")),
+          tags$p(HTML("The bar chart shows the distribution of answers to each question in the survey on masculinity taken by adult men. The chart includes separate bars for different age groups (18-34, 35-64, and 65+). The height of each bar corresponds to the number of respondents who answered the survey question and fell into the corresponding age and racial group."))
         ),
         mainPanel(
           plotOutput("mascuPlot") %>%
@@ -60,7 +37,7 @@ shinyUI(
         "Stacked bar chart",
         sidebarPanel(
           tags$p(HTML("<h3>Stacked bar chart</h3>")),
-          tags$p(HTML("<h4>Info here</h4>")),
+          tags$p(HTML("<h4>Info here</h4>"))
         ),
         mainPanel(
           plotOutput("stacked_bar_chart") %>%
@@ -78,7 +55,7 @@ shinyUI(
         "Horizontal barplot",
         sidebarPanel(
           tags$p(HTML("<h3>Horizontal barplot</h3>")),
-          tags$p(HTML("Info here<")),
+          tags$p(HTML("Info here<"))
         ),
           mainPanel(plotOutput("horisontalPlot_1") %>%
                     withSpinner()
@@ -88,7 +65,7 @@ shinyUI(
         "Horizontal barplot v2",
         sidebarPanel(
           tags$p(HTML("<h3>Horizontal barplot</h3>")),
-          tags$p(HTML("Info here")),
+          tags$p(HTML("Info here"))
         ),
         mainPanel(plotOutput("horisontalPlot_2") %>%
                     withSpinner()
@@ -119,7 +96,7 @@ shinyUI(
           tags$p(HTML("Your physical health")),
           tags$p(HTML("Your finances, including your current or future income, assets, or debt")),
           tags$p(HTML("Your ability to provide for your family, current or anticipated")),
-          tags$p(HTML("None of the above")),
+          tags$p(HTML("None of the above"))
         ),
           mainPanel(
             plotOutput("multiColumn") %>%
@@ -143,13 +120,11 @@ shinyUI(
           tags$p(HTML("Your physical health")),
           tags$p(HTML("Your finances, including your current or future income, assets, or debt")),
           tags$p(HTML("Your ability to provide for your family, current or anticipated")),
-          tags$p(HTML("None of the above")),
+          tags$p(HTML("None of the above"))
         ),
         mainPanel(
           img(
-            src ="animation.gif",
-            width = "750px",
-            height = "600px"
+            src ="animation3.gif"
           )
         )
       )
@@ -199,7 +174,7 @@ shinyUI(
           tags$p(HTML("<h3>From the data, we have formulated some questions that we want to answer:</h3>")),
           tags$p(HTML("How do questions, such as self-perceived masculinity, come across in different age and race groups?")),
           tags$p(HTML("What are the factors that a man may worry about in relation to his masculinity, and how do these concerns vary across different races?")),
-          tags$p(HTML("What is the general spread of races over age that has taken this survey?")),
+          tags$p(HTML("What is the general spread of races over age that has taken this survey?"))
         )
       )
     )
@@ -218,7 +193,7 @@ shinyUI(
           tags$p(HTML("Daniel Bahrami: dabah20@student.sdu.dk")),
           tags$p(HTML("Hans: haped20@student.sdu.dk")),
           tags$p(HTML("Jesper: jedie20@student.sdu.dk")),
-          tags$p(HTML("Jonas: jobel20@student.sdu.dk")),
+          tags$p(HTML("Jonas: jobel20@student.sdu.dk"))
         )
       ),
       # Credits.
@@ -226,7 +201,7 @@ shinyUI(
         "Credits",
         sidebarPanel(
           tags$h1("Datasets"),
-          tags$p(HTML("The data is from <a href=\"https://github.com/fivethirtyeight/data/tree/master/masculinity-survey\"> FiveThirtyEight’s study </a> in collaboration with WNYC, on masculinity and what effects it has on people in different categories. It consists of a series of questions, where the individual can answer typically one of 5 possibilities, usually varying from ‘very much’ to ‘not at all’ and ‘no answer’, with all of them adding up to 100% of people asked. The categories consist of ‘Adult men’, then three age categories of ‘18-34’, ‘35-64’ and ‘65 and up’. After these there are categories for ‘white’ and ‘non-white’, then ‘has children’ and ‘no children’, and lastly sexual orientation summed up as ‘straight’ and ‘gay/bisexual’. ")),
+          tags$p(HTML("The data is from <a href=\"https://github.com/fivethirtyeight/data/tree/master/masculinity-survey\"> FiveThirtyEight’s study </a> in collaboration with WNYC, on masculinity and what effects it has on people in different categories. It consists of a series of questions, where the individual can answer typically one of 5 possibilities, usually varying from ‘very much’ to ‘not at all’ and ‘no answer’, with all of them adding up to 100% of people asked. The categories consist of ‘Adult men’, then three age categories of ‘18-34’, ‘35-64’ and ‘65 and up’. After these there are categories for ‘white’ and ‘non-white’, then ‘has children’ and ‘no children’, and lastly sexual orientation summed up as ‘straight’ and ‘gay/bisexual’. "))
         )
       )
     )

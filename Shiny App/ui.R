@@ -62,7 +62,7 @@ shinyUI(
       tabPanel(
         "Horizontal barplot v2",
         sidebarPanel(
-          tags$p(HTML("<h3>Horizontal barplot</h3>")),
+          tags$p(HTML("It is important to consider the age distribution of the respondents in the survey when analyzing the employment status by race/ethnicity, as age can significantly impact employment status. For example, if the white respondents in the survey are disproportionately older than the Hispanic respondents, it could partially explain the higher percentage of white respondents who are retired, as retirement is more common at older ages. On the other hand, if the Hispanic respondents are disproportionately younger than the white respondents, this could partially explain the higher percentage of Hispanic respondents who are working full-time, as younger individuals are more likely to be in employment or in studies than older individuals. Without considering the age distribution of the respondents, it is difficult to accurately interpret the employment status data by race/ethnicity. Age can be a significant factor in employment status and should be taken into account when analyzing data and drawing conclusions. Despite the potential bias introduced by the age distribution of the respondents, the graph showing employment status by race/ethnicity can still be a useful tool for understanding trends and patterns in the labor market. By comparing the employment status of different racial/ethnic groups, the graph can provide insights into potential disparities or inequalities in employment opportunities and outcomes.")),
         ),
         mainPanel(plotOutput("horisontalPlot_2") %>%
                     withSpinner()

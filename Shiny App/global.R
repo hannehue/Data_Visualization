@@ -26,10 +26,9 @@ library(gifski)
 library(gganimate)
 library(plotly)
 
-
 raw_data <- read_csv("data_files/raw-responses.csv")
-#View(raw_responses)
 formatted_data <- read_csv("data_files/raw-responses.csv")
+
 # formatted_data %>%
 #   select(c(
 #     "q0001",
@@ -81,8 +80,6 @@ worry_about = formatted_data[, c(
   "q0028"
 )]
 
-
-
 colnames(single_Column_Quest) = c(
   "1How Masculine do you feel?",
   "2How important is it, that others see you as masculine?",
@@ -97,11 +94,6 @@ colnames(single_Column_Quest) = c(
   "24What is your marriage status",
   "26What is you sexual orientation"
 )
-
-
-
-
-
 
 # colnames(formatted_data) = c(
 #   "id",
@@ -209,7 +201,6 @@ colnames(single_Column_Quest) = c(
 #   "weight"
 # )
 
-
 rankings <- data.frame(
   q01 = formatted_data$q0001, # How masculine do you feel
   q02 = formatted_data$q0002, # How important is it, that others see you as masculine
@@ -241,5 +232,3 @@ colnames(numeric_values) = c(
   "Age",
   "Kids"
 )
-
-

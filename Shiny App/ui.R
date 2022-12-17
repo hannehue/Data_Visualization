@@ -1,10 +1,34 @@
 shinyUI(
   fluidPage(theme = "style.css",
-                  div(style = "padding: 1px 0px; width: '100%'",
-                      titlePanel(
-                        title = "",
-                        windowTitle = "Masculinity data visualization"
-                      )
+            div(style = "padding: 1px 0px; width: '100%'",
+                titlePanel(
+                  title = "",
+                  windowTitle = "Data Visualization - Masculinity Survey"
+                )
+            ),
+            navbarPage(
+
+              # Application title.
+              title = div(span("Data Visualization - Masculinity Survey",
+                               style = "position: relative; top: 50%; transform: translateY(-50%);")),
+
+              # Bar Chart
+              tabPanel(
+                "Bar Chart",
+                tabsetPanel(
+                  type = "tabs",
+                  tabPanel(
+                    "All questions",
+                    sidebarPanel(
+                      selectInput(
+                        inputId = "singleColumn", label = "Single Column",
+                        choices = colnames(single_Column_Quest)
+                      ),
+                    ),
+                    mainPanel(
+                      plotOutput("mascuPlot") %>%
+                        withSpinner()
+                    )
                   ),
                   navbarPage(
   # Application title.

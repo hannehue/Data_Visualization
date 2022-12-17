@@ -220,7 +220,7 @@ numeric_values <- data.frame(q01 = rank_num$q01, # How masculine do you feel
                              Earnings = formatted_data$q0034,
                              Age = formatted_data$age3,
                              Kids = formatted_data$kids,
-                             stringsAsFactors = TRUE) 
+                             stringsAsFactors = TRUE)
 
 colnames(numeric_values) = c(
   "How Masculine do you feel?",

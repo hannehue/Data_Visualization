@@ -53,7 +53,7 @@ shinyUI(
       tabPanel(
         "Horizontal barplot",
         sidebarPanel(
-          tags$p(HTML("<h3>Horizontal barplot</h3>"))
+          tags$p(HTML("It is not surprising that the 18-34 age group has a higher percentage of people currently in studies. This is typically the age range when individuals are completing their education or training and preparing for their careers. As people progress through their careers and reach the 35-64 age range, it makes sense that there would be a higher percentage of people in employment, as this is often the prime working age for many individuals. The higher percentage of retired individuals in the 65 and older age group is also expected, as this age range marks the typical retirement age for many people. After years of working and building their careers, it is common for individuals to transition into retirement and enjoy the wealth of their labor. Overall, the employment status distribution shown in the graph aligns with what one would expect based on the typical life stages and career progression of individuals."))
           ),
           mainPanel(plotOutput("horisontalPlot_1") %>%
                     withSpinner()

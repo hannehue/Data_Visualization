@@ -27,7 +27,7 @@ shinyServer(
            axis.title=element_text(size=15),
            legend.title = element_text(size=20), #change legend title font size
            legend.text = element_text(size=15)) + 
-          xlab("Amount") + ylab("Age group")
+          ylab("Amount") + xlab("Age group")
     }, height = 600, width = 900)
 
     dat_sub <- raw_data %>%

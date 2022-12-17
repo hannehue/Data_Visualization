@@ -37,7 +37,7 @@ shinyUI(
         "Stacked bar chart",
         sidebarPanel(
           tags$p(HTML("<h3>Stacked bar chart</h3>")),
-          tags$p(HTML("<h4>Info here</h4>"))
+          tags$p(HTML("This stacked bar chart shows the concentration of each ethnicity of all of the respondents. This chart does not necessarily answer formulated questions, it still does provide some insight in the data. There are several reasons why it is important and useful to create a chart showing the different ethnicities of respondents in a survey and the percentage each ethnicity represents. Firstly, such a chart can help to highlight any potential biases or imbalances in the sample population. If certain ethnicities are significantly underrepresented in the survey, it may affect the reliability and generalizability of the results. By creating a chart, it becomes easier to identify any potential issues with the sample and to adjust the analysis accordingly. Finally, a chart like this can be useful for presenting the results of the survey in a clear and concise manner, making it easier for others to understand and interpret the data. By visualizing the data in this way, it becomes easier to see the overall picture and to identify any important trends or patterns. Overall, creating a chart showing the different ethnicities of respondents in a survey and the percentage each ethnicity represents is an important and useful tool for understanding and interpreting the data. We can see on the chart that the white people represent the majority in all age groups, but they have an even stronger representation further up we go in the age groups. This means that our data for races such as black and hispanics become less and less accurate and potentially biased the higher up we look in the age groups of respondents. This is an important factor to consider when analyzing the data."))
         ),
         mainPanel(
           plotOutput("stacked_bar_chart") %>%
@@ -54,9 +54,8 @@ shinyUI(
       tabPanel(
         "Horizontal barplot",
         sidebarPanel(
-          tags$p(HTML("<h3>Horizontal barplot</h3>")),
-          tags$p(HTML("Info here<"))
-        ),
+          tags$p(HTML("<h3>Horizontal barplot</h3>"))
+          ),
           mainPanel(plotOutput("horisontalPlot_1") %>%
                     withSpinner()
         )
@@ -65,7 +64,6 @@ shinyUI(
         "Horizontal barplot v2",
         sidebarPanel(
           tags$p(HTML("<h3>Horizontal barplot</h3>")),
-          tags$p(HTML("Info here"))
         ),
         mainPanel(plotOutput("horisontalPlot_2") %>%
                     withSpinner()
@@ -83,7 +81,7 @@ shinyUI(
         "Mens concerns",
         sidebarPanel(
           tags$p(HTML("<h3>Multicolumn chart</h3>")),
-          tags$p(HTML("Info here")),
+          tags$p(HTML("The stacked bar chart shows what men worry about, about themselves. Men might feel a lot of pressure from the media, people and so on, as to how they should look or act, and this graph helps visualize what men actually worry about. All of these factors are grouped on a single chart to easily give a holistic overview of the ranking of these factors. This showed that the vast majority of men do not care about their height, at least not worry about it, but are actually more worried about their weight.")),
           tags$p(HTML("<h4>Which of the following do you worry about on a daily or near daily basis? (Select all that apply.)</h4>")),
           tags$p(HTML("Your height")),
           tags$p(HTML("Your weight")),
@@ -107,7 +105,7 @@ shinyUI(
         "Animated multicolumn chart",
         sidebarPanel(
           tags$p(HTML("<h3>Multicolumn chart</h3>")),
-          tags$p(HTML("Info here -")),
+          tags$p(HTML("The stacked bar chart gave a great overview about what men worry about, but we wondered if there was a noticeable difference between what men worry about based on what race they were. A great way to show this was to animate the graph, cycling through respondents based on their race.This shows that generally, the top three factors stay in the top three, meaning that the major factor all men, across race, worry about are Weight, Physical health, and their finances. It was interesting to see that among Asians, their physical health was much more worrying to them than their weight, where weight was higher, or much closer to being higher, among other races. The animated chart is available in our Shiny App.")),
           tags$p(HTML("<h4>Which of the following do you worry about on a daily or near daily basis? (Select all that apply.)</h4>")),
           tags$p(HTML("Your height")),
           tags$p(HTML("Your weight")),
@@ -139,7 +137,7 @@ shinyUI(
         "Count plot",
         sidebarPanel(
           tags$p(HTML("<h3>Count plot</h3>")),
-          tags$p(HTML("Info here -")),
+          tags$p(HTML("After having mapped the ordered categorical to numeric value, we created a count plot that is a scatter plot, where instead of each observation representing a dot, dots were grouped together, and increased the size of that group. This was done, because the range was small, and the majority of dots would be on top of eachother, and it would not explain anything. The count char visualized questions “In general, how masculine or \"manly\" do you feel?” and “How important is it to you that others see you as masculine?”. This shows a distribution of our observations that the majority of them saw themselves as at least somewhat masculine, but the majority of those who did, also felt that it was important that they were perceived as masculine. Our count char also includes brushing, so that you can mouse over a point, to see details about it.")),
         ),
         mainPanel(
           plotlyOutput("countPlot") %>%
@@ -150,7 +148,7 @@ shinyUI(
         "Distribution Plot",
         sidebarPanel(
           tags$p(HTML("<h3>Distribution Plot</h3>")),
-          tags$p(HTML("Info here -")),
+          tags$p(HTML("The density plot shows us how important it is to the participants, that they are perceived as masculine, grouped by race. This shows that whites are, the most in the middle, of caring or not caring, where we see in the other races, that the distribution curve is going upward, meaning that generally, it is more important to them, that they are perceived as masculine.")),
         ),
         mainPanel(
           plotOutput("distPlot") %>%

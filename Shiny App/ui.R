@@ -1,5 +1,6 @@
 shinyUI(
-  fluidPage(theme = "style.css",
+  fluidPage(
+    theme = "style.css",
     div(style = "padding: 1px 0px; width: '100%'",
       titlePanel(
                   title = "",
@@ -189,7 +190,7 @@ shinyUI(
         tags$p(HTML("Daniel Bahrami: dabah20@student.sdu.dk")),
         tags$p(HTML("Hans Pedersen: haped20@student.sdu.dk")),
         tags$p(HTML("Jesper Diederichsen: jedie20@student.sdu.dk")),
-        tags$p(HTML("Jonas Beltoft: jobel20@student.sdu.dk")),
+        tags$p(HTML("Jonas Beltoft: jobel20@student.sdu.dk"))
       ),
       # Credits.
       tabPanel(
@@ -199,6 +200,15 @@ shinyUI(
           tags$p(HTML("The data is from <a href=\"https://github.com/fivethirtyeight/data/tree/master/masculinity-survey\"> FiveThirtyEight’s study </a> in collaboration with WNYC, on masculinity and what effects it has on people in different categories. It consists of a series of questions, where the individual can answer typically one of 5 possibilities, usually varying from ‘very much’ to ‘not at all’ and ‘no answer’, with all of them adding up to 100% of people asked. The categories consist of ‘Adult men’, then three age categories of ‘18-34’, ‘35-64’ and ‘65 and up’. After these there are categories for ‘white’ and ‘non-white’, then ‘has children’ and ‘no children’, and lastly sexual orientation summed up as ‘straight’ and ‘gay/bisexual’. "))
         )
       )
+    )
+  ),
+  tabPanel(
+    "Download report",
+    tabsetPanel(
+      tabPanel(
+        "report",
+        downloadButton("report", "Generate report")
+        )
     )
   )
   

@@ -149,4 +149,20 @@ shinyServer(
             legend.text = element_text(size=15))+ 
       ylab("Density")
     })
+    
+    
+    output$report <- downloadHandler(filename <- function() {
+      paste("Report-group-18", "pdf", sep=".")
+    },
+    
+    content <- function(file) {
+      file.copy("www/Report.pdf", file)
+    },
+    contentType = "pdf")
+    
+    
+    
   })
+
+
+

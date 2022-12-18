@@ -23,11 +23,12 @@ shinyServer(
         mutate(n = prop.table(n) * 100) %>%
         ggplot(aes(age, n, fill = quest)) +
         geom_col(position = "dodge") +
-        theme(axis.text=element_text(size=15),
-           axis.title=element_text(size=15),
-           legend.title = element_text(size=20), #change legend title font size
-           legend.text = element_text(size=15)) + 
-          ylab("Amount") + xlab("Age group")
+        theme(axis.text = element_text(size = 15),
+              axis.title = element_text(size = 15),
+              legend.title = element_text(size = 20), #change legend title font size
+              legend.text = element_text(size = 15)) +
+        ylab("Amount") +
+        xlab("Age group")
     }, height = 600, width = 900)
 
     dat_sub <- raw_data %>%
@@ -43,11 +44,11 @@ shinyServer(
         ggtitle("Age and race distribution of respondees") +
         xlab("Age groups") +
         ylab("Respondee percentage") +
-        scale_fill_discrete(name = "Race") + 
-      theme(axis.text=element_text(size=15),
-            axis.title=element_text(size=15),
-            legend.title = element_text(size=20), #change legend title font size
-            legend.text = element_text(size=15))
+        scale_fill_discrete(name = "Race") +
+        theme(axis.text = element_text(size = 15),
+              axis.title = element_text(size = 15),
+              legend.title = element_text(size = 20), #change legend title font size
+              legend.text = element_text(size = 15))
     })
 
 
@@ -66,11 +67,11 @@ shinyServer(
         xlab("Age groups") +
         ylab("Respondee percentage") +
         scale_fill_discrete(name = "") +
-        coord_flip()  + 
-      theme(axis.text=element_text(size=15),
-            axis.title=element_text(size=15),
-            legend.title = element_text(size=20), #change legend title font size
-            legend.text = element_text(size=15))
+        coord_flip() +
+        theme(axis.text = element_text(size = 15),
+              axis.title = element_text(size = 15),
+              legend.title = element_text(size = 20), #change legend title font size
+              legend.text = element_text(size = 15))
     })
 
 
@@ -88,11 +89,11 @@ shinyServer(
         xlab("Race distribution") +
         ylab("Respondee percentage") +
         scale_fill_discrete(name = "") +
-        coord_flip() + 
-      theme(axis.text=element_text(size=15),
-            axis.title=element_text(size=15),
-            legend.title = element_text(size=20), #change legend title font size
-            legend.text = element_text(size=15))
+        coord_flip() +
+        theme(axis.text = element_text(size = 15),
+              axis.title = element_text(size = 15),
+              legend.title = element_text(size = 20), #change legend title font size
+              legend.text = element_text(size = 15))
     })
 
     output$multiColumn <- renderPlot({
@@ -111,13 +112,14 @@ shinyServer(
         geom_bar(position = "fill", stat = "identity") +
         coord_flip() +
         scale_fill_manual(values = c("#005F94", "#E0912A")) +
-        labs(title = "What do you worry about on a daily/near daily basis") + 
-      theme(axis.text=element_text(size=15),
-            axis.title=element_text(size=15),
-            
-            legend.title = element_text(size=20), #change legend title font size
-            legend.text = element_text(size=15))+ 
-      xlab("Factor") + ylab("Percentage")
+        labs(title = "What do you worry about on a daily/near daily basis") +
+        theme(axis.text = element_text(size = 15),
+              axis.title = element_text(size = 15),
+
+              legend.title = element_text(size = 20), #change legend title font size
+              legend.text = element_text(size = 15)) +
+        xlab("Factor") +
+        ylab("Percentage")
     })
 
     output$countPlot <- renderPlotly({
@@ -128,12 +130,13 @@ shinyServer(
         labs(
           y = "masculinity: 1 = Not masculine, 5 = Very masculine",
           x = "importance: 1 = Not important, 5 = very important") +
-        theme(axis.text=element_text(size=15),
-            axis.title=element_text(size=15),
-            
-            legend.title = element_text(size=20), #change legend title font size
-            legend.text = element_text(size=15))+ 
-      xlab("Factor") + ylab("Percentage")
+        theme(axis.text = element_text(size = 15),
+              axis.title = element_text(size = 15),
+
+              legend.title = element_text(size = 20), #change legend title font size
+              legend.text = element_text(size = 15)) +
+        xlab("Factor") +
+        ylab("Percentage")
 
       ggplotly(t)
     })
@@ -142,26 +145,31 @@ shinyServer(
       ggplot(numeric_values, aes(x = `How important is it, that others see you as masculine?`, group = Race, fill = Race,)) +
         geom_density(adjust = 1, alpha = 0.3) +
         facet_wrap(~Race) +
-        theme(axis.text=element_text(size=15),
-            axis.title=element_text(size=15),
-            
-            legend.title = element_text(size=20), #change legend title font size
-            legend.text = element_text(size=15))+ 
-      ylab("Density")
+        theme(axis.text = element_text(size = 15),
+              axis.title = element_text(size = 15),
+
+              legend.title = element_text(size = 20), #change legend title font size
+              legend.text = element_text(size = 15)) +
+        ylab("Density")
     })
-    
-    
-    output$report <- downloadHandler(filename <- function() {
-      paste("Report-group-18", "pdf", sep=".")
-    },
-    
-    content <- function(file) {
-      file.copy("www/Report.pdf", file)
-    },
-    contentType = "pdf")
-    
-    
-    
+
+
+    output$report <- downloadHandler(
+
+      filename <- function() {
+        paste("Report-group-18", "pdf", sep = ".")
+      }
+
+      ,
+
+      content <- function(file) {
+        file.copy("www/Report.pdf", file)
+      }
+
+      ,
+      contentType = "pdf")
+
+
   })
 
 
